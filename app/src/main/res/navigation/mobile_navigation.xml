@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_explorar">
+
+    <fragment
+        android:id="@+id/navigation_myrooms"
+        android:name="com.example.my_roomate.ui.myrooms.MyRoomsFragment"
+        android:label="@string/title_myrooms"
+        tools:layout="@layout/fragment_my_rooms" />
+
+    <fragment
+        android:id="@+id/navigation_buzon"
+        android:name="com.example.my_roomate.ui.buzon.BuzonFragment"
+        android:label="@string/title_buzon"
+        tools:layout="@layout/fragment_buzon" />
+
+    <fragment
+        android:id="@+id/navigation_explorar"
+        android:name="com.example.my_roomate.ui.explorar.ExplorarFragment"
+        android:label="@string/title_explorar"
+        tools:layout="@layout/fragment_explorar" />
+    <fragment
+        android:id="@+id/navigation_perfil"
+        android:name="com.example.my_roomate.ui.perfil.PerfilFragment"
+        android:label="@string/title_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/navigation_guardados"
+        android:name="com.example.my_roomate.ui.guardados.GuardadosFragment"
+        android:label="@string/title_guardados"
+        tools:layout="@layout/fragment_guardados" />
+
+</navigation>

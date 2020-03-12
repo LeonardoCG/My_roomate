@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_myrooms"
+        android:icon="@drawable/myroom"
+        android:title="@string/title_myrooms" />
+
+    <item
+        android:id="@+id/navigation_buzon"
+        android:icon="@drawable/buzon"
+        android:title="@string/title_buzon" />
+
+    <item
+        android:id="@+id/navigation_explorar"
+        android:icon="@drawable/explorar"
+        android:title="@string/title_explorar" />
+    <item
+        android:id="@+id/navigation_perfil"
+        android:icon="@drawable/perfil"
+        android:title="@string/title_perfil" />
+    <item
+        android:id="@+id/navigation_guardados"
+        android:icon="@drawable/guardados"
+        android:title="@string/title_guardados" />
+
+</menu>

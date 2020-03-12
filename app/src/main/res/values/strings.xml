@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">My_roomate</string>
+    <string name="title_activity_menu_view">MenuView</string>
+    <string name="title_myrooms">My Rooms</string>
+    <string name="title_buzon">Buzón</string>
+    <string name="title_explorar">Explorar</string>
+    <string name="title_perfil">Perfil</string>
+    <string name="title_guardados">Guardados</string>
+    <string name="title_activity_menu_nav">menu_nav</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
