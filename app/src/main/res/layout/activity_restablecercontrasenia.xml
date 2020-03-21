@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_color"
+    tools:context=".restablecercontrasenia">
+
+    <TextView
+        android:id="@+id/rtitlte1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Se te ha olvidado tu contraseña"
+        android:textColor="@color/container_white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="127dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/rtitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="!Vamos a recuperarlo¡"
+        android:textColor="@color/container_white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="112dp"
+        tools:layout_editor_absoluteY="244dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/rcorreo"
+        android:layout_width="332dp"
+        android:layout_height="53dp"
+        android:background="@drawable/btn_light"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/container_white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="293dp"
+        tools:text="Email" />
+
+    <TextView
+        android:id="@+id/rtitle3"
+        android:layout_width="203dp"
+        android:layout_height="93dp"
+        android:gravity="center"
+        android:text="Una vez introducida recibiras un coreo para cambiar tu contraseña"
+        android:textColor="@color/container_white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="93dp"
+        tools:layout_editor_absoluteY="359dp" />
+
+    <Button
+        android:id="@+id/rbuttonPopup"
+        android:layout_width="357dp"
+        android:layout_height="49dp"
+        android:background="@drawable/btn_light"
+        android:gravity="center"
+        android:text="Restablecer mi contraseña"
+        android:textColor="@color/container_white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="503dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

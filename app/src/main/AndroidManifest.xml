@@ -9,17 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".menu_nav"
-            android:label="@string/title_activity_menu_nav">
+        <activity android:name=".PopupError"
+            android:theme="@style/AppTheme.TemaPopup"></activity>
+        <activity android:name=".PopupCambiada"
+            android:theme="@style/AppTheme.TemaPopup"/>
+        <activity android:name=".restablecercontrasenia" />
+        <activity android:name=".Login_Activity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".menu_nav"
+            android:label="@string/title_activity_menu_nav">
+
         </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

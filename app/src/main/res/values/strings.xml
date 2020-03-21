@@ -10,4 +10,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_login">My_Roomate</string>
+
+    <string name="contrasenia_cambiada">!Contraseña Cambiada¡</string>
+    <string name="ocurrio_un_error">!Ocurrio un Error¡</string>
+
+
 </resources>
