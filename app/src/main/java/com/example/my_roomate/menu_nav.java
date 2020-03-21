@@ -16,6 +16,7 @@ public class menu_nav extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme);//Ajustamos para que este sea el tema a cargar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_menu_nav);
         BottomNavigationView navView = findViewById(R.id.nav_view);

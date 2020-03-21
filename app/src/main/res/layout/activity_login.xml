@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Login">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_color">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="140sp"
+            android:layout_height="140sp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/backpack_white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="40sp"
+        android:paddingEnd="40sp"
+        android:paddingStart="40sp"
+        android:background="@color/container_white">
+
+        <TextView
+            android:id="@+id/txt_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="@string/text_correo"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:paddingBottom="5sp"/>
+
+        <EditText
+            android:id="@+id/input_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_login_style"
+            android:ems="10"
+            android:fontFamily="@font/segoeui"
+            android:hint="@string/text_correo"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHighlight="@color/colorPrimaryDark"
+            tools:layout_editor_absoluteY="362dp"
+            android:layout_marginBottom="10sp" />
+
+        <TextView
+            android:id="@+id/txt_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="@string/text_contraseña"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteY="362dp"
+            android:paddingBottom="5sp"/>
+
+        <EditText
+            android:id="@+id/input_password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_login_style"
+            android:ems="10"
+            android:fontFamily="@font/segoeui"
+            android:hint="@string/text_contraseña"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteY="362dp"
+            android:layout_marginBottom="10sp"/>
+
+        <TextView
+            android:id="@+id/forget_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:layout_marginBottom="5sp"
+            android:fontFamily="@font/segoe_ui_bold_italic"
+            android:text="@string/forget_password"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/colorAccent"
+            android:textColorLink="@color/colorAccent"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_continuar_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/btn_orange"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:text="@string/bto_login"
+            android:textColor="@color/icons"
+            android:textColorLink="@color/icons"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/container_registro_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_descripton_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/segoe_ui_italic"
+                android:text="@string/description_login"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txt_registrarse_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/segoe_ui_bold_italic"
+                android:text="@string/registrarte"
+                android:textAlignment="textStart"
+                android:textColor="@color/colorAccent"
+                android:textColorLink="@color/colorAccent"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_facebook_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_ui_bold"
+            android:textColor="@color/icons"
+            android:textColorLink="@color/icons"
+            android:textSize="18sp"
+            android:background="@drawable/btn_facebook"
+            android:text="@string/btn_facebook"
+            android:layout_marginTop="30sp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

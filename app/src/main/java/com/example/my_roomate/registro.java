@@ -23,6 +23,7 @@ public class registro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.AppTheme);//Ajustamos para que este sea el tema a cargar
         setContentView(R.layout.activity_registro);
         //espero que desaparezca el toolbar sin el cuadro feo jajaja
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);

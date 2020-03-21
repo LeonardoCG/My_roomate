@@ -8,6 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+<<<<<<< HEAD
         android:theme="@style/AppTheme">
 
         <activity android:name=".PopupError"
@@ -29,10 +30,23 @@
             android:label="@string/title_activity_menu_nav">
         </activity>
         <activity android:name=".registro">
+=======
+        android:theme="@style/AppTheme.Launcher">
+        <activity android:name=".Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+>>>>>>> e1edfec6dfa766f2ebefeff8e0ca2142e9adc3de
 
         </activity>
+<<<<<<< HEAD
         <activity android:name=".MainActivity" />
 
+=======
+        <activity
+            android:name=".menu_nav"
+            android:label="@string/title_activity_menu_nav"/>
+        <activity android:name=".registro"/>
+>>>>>>> e1edfec6dfa766f2ebefeff8e0ca2142e9adc3de
     </application>
 
 </manifest>
