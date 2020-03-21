@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Launcher">
+        <activity android:name=".CheckCodiContainer"></activity>
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +19,8 @@
         </activity>
         <activity
             android:name=".menu_nav"
-            android:label="@string/title_activity_menu_nav"/>
-        <activity android:name=".registro"/>
+            android:label="@string/title_activity_menu_nav" />
+        <activity android:name=".registro" />
     </application>
 
 </manifest>

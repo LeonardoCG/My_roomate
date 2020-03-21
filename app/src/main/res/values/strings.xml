@@ -22,4 +22,11 @@
     <string name="registrarte">Registrarme</string>
     <string name="btn_facebook">Continuar con Facebook</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="envio_codigo_cel">Te enviaremos un código a tu celular</string>
+    <string name="enviar_codigo">Enviar código</string>
+    <string name="verificar_codigo">Comprobar código</string>
+    <string name="verificar_codigo_cel">Introduce el código que te enviamos</string>
+
 </resources>

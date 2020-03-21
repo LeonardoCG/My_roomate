@@ -25,15 +25,21 @@ public class registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme);//Ajustamos para que este sea el tema a cargar
         setContentView(R.layout.activity_registro);
-        //espero que desaparezca el toolbar sin el cuadro feo jajaja
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
-
+        //Setiar el action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Activar la flecha de atras
+        getSupportActionBar().setElevation(0); //quitar la elevación
+        getSupportActionBar().setDisplayShowTitleEnabled(false); //quitar el titulo
 
         et_nombre = (EditText)findViewById(R.id.text_nombre);
         et_correo = (EditText)findViewById(R.id.text_correo);
         et_contraseña = (EditText)findViewById(R.id.text_contraseña);
         et_confirmar = (EditText)findViewById(R.id.text_contraseñaconf);
+    }
+
+    //Para regresar atras en el action bar
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return false;
     }
     //Metodo para el boton de registrarse
     public void Guardar(View view){
@@ -61,10 +67,10 @@ public class registro extends AppCompatActivity {
     }
     public void successRegistro() {
         //cuando el registro es correcto te manda a explorar (es provosional)
-        Intent intent = new Intent(this, menu_nav.class);
+        Intent intent = new Intent(this, CheckCodiContainer.class);
         startActivity(intent);
-        String msg_welcome = "Bienvenido " + nombre;
-        Toast.makeText(this, msg_welcome, Toast.LENGTH_LONG).show();
+        //String msg_welcome = "Bienvenido " + nombre;
+        //Toast.makeText(this, msg_welcome, Toast.LENGTH_LONG).show();
     }
     public boolean validate () {
         boolean valid = true;
