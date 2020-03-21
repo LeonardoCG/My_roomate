@@ -14,20 +14,22 @@
             android:theme="@style/AppTheme.TemaPopup"></activity>
         <activity android:name=".PopupCambiada"
             android:theme="@style/AppTheme.TemaPopup"></activity>
-        <activity android:name=".restablecercontrasenia"></activity>
-        <activity android:name=".Login_Activity">
+        <activity android:name=".restablecercontrasenia">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Login_Activity">
 
+        </activity>
         <activity
             android:name=".menu_nav"
             android:label="@string/title_activity_menu_nav">
         </activity>
         <activity android:name=".registro">
+
         </activity>
         <activity android:name=".MainActivity" />
 
