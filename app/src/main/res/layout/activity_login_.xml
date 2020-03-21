@@ -11,10 +11,14 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="416dp"
-        android:layout_height="189dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="367dp"
+        android:layout_height="212dp"
+        android:layout_marginBottom="4dp"
         android:background="@drawable/gradient_color"
+        app:layout_constraintBottom_toTopOf="@+id/correo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
 
@@ -22,70 +26,87 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="135dp"
+        android:layout_marginBottom="362dp"
         android:gravity="center"
         android:text="My_Roomate"
         android:textColor="@color/container_white"
         android:textSize="30sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="135dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/correo"
         android:layout_width="76dp"
-        android:layout_height="23dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="63dp"
         android:text="Email"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="193dp" />
+        app:layout_constraintBottom_toTopOf="@+id/contraseña"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="282dp"
-        android:layout_height="43dp"
+        android:layout_width="314dp"
+        android:layout_height="48dp"
         android:background="@drawable/btn_login"
         android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/contraseña"
+        app:layout_constraintEnd_toEndOf="@+id/pasword"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pasword"
         app:layout_constraintTop_toBottomOf="@+id/correo"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="52dp" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/contraseña"
         android:layout_width="83dp"
-        android:layout_height="21dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="102dp"
         android:text="Password"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="69dp"
-        tools:layout_editor_absoluteY="279dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/correo"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/pasword"
-        android:layout_width="284dp"
-        android:layout_height="41dp"
+        android:layout_width="314dp"
+        android:layout_height="44dp"
         android:background="@drawable/btn_login"
         android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/rcontraseña"
+        app:layout_constraintEnd_toEndOf="@+id/rcontraseña"
+        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintStart_toStartOf="@+id/button2"
         app:layout_constraintTop_toBottomOf="@+id/contraseña"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="52dp" />
+        app:layout_constraintVertical_bias="0.588"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/rcontraseña"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="75dp"
         android:layout_marginBottom="20dp"
         android:gravity="center|right"
         android:text="olvide mi contraseña"
@@ -93,27 +114,33 @@
         android:textSize="15sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/button3"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="202dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="291dp"
-        android:layout_height="34dp"
+        android:layout_width="292dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="102dp"
         android:background="@drawable/btn_orange"
         android:gravity="center"
         android:text="CONTINUAR"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="403dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/rcontraseña"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="@+id/rcontraseña"
+        app:layout_constraintTop_toBottomOf="@+id/contraseña"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/registrarme"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="95dp"
+        android:layout_marginEnd="95dp"
         android:gravity="center"
         android:text="No tengo una cuentra, registrarme"
         android:textColor="@color/design_default_color_primary_dark"
@@ -121,17 +148,20 @@
         android:textSize="15sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3"
         app:layout_constraintVertical_bias="0.148"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="454dp" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="307dp"
-        android:layout_height="39dp"
+        android:layout_width="285dp"
+        android:layout_height="47dp"
 
+        android:layout_marginStart="52dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="52dp"
         android:background="@drawable/btn_login"
         android:backgroundTint="@color/colorPrimaryDark"
         android:gravity="center"
@@ -139,8 +169,11 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="52dp"
-        tools:layout_editor_absoluteY="538dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.772"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

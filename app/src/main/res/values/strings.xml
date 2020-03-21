@@ -10,23 +10,16 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     <string name="title_login">My_Roomate</string>
 
     <string name="contrasenia_cambiada">!Contraseña Cambiada¡</string>
     <string name="ocurrio_un_error">!Ocurrio un Error¡</string>
 
-=======
-
-=======
     <string name="search_title">encuentra a tu roomie</string>
->>>>>>> 45984ffe53ccbd335d172b88cf9b50d0398409fe
     <string name="text_nombre">Nombre</string>
     <string name="text_correo">Email</string>
     <string name="text_contraseña">Contraseña</string>
     <string name="text_contraseñaconf">Confirmar contraseña</string>
     <string name="bto_registrar">Registrarme</string>
->>>>>>> b79a072e499420f39bf2b2548f73306a6c1555cd
-
 </resources>
