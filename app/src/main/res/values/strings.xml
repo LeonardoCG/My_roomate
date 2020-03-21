@@ -11,6 +11,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="title_login">My_Roomate</string>
 
     <string name="contrasenia_cambiada">!Contraseña Cambiada¡</string>
@@ -18,6 +19,9 @@
 
 =======
 
+=======
+    <string name="search_title">encuentra a tu roomie</string>
+>>>>>>> 45984ffe53ccbd335d172b88cf9b50d0398409fe
     <string name="text_nombre">Nombre</string>
     <string name="text_correo">Email</string>
     <string name="text_contraseña">Contraseña</string>

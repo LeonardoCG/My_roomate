@@ -3,9 +3,11 @@ package com.example.my_roomate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.view.View;
 import android.widget.Toast;
@@ -22,6 +24,9 @@ public class registro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+        //espero que desaparezca el toolbar sin el cuadro feo jajaja
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
 
 
         et_nombre = (EditText)findViewById(R.id.text_nombre);
@@ -43,18 +48,22 @@ public class registro extends AppCompatActivity {
         obj_editor.putString(nombre,confirmar);
         obj_editor.commit();
 
-        Toast.makeText(this, "El contacto ha sido guardado", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "El contacto ha sido guardado", Toast.LENGTH_LONG).show();
 
         inicialise ();
         if (!validate()) {
             Toast.makeText(this,"no se registro",Toast.LENGTH_SHORT).show();
         }
         else {
-            AsignacionSuceso();
+            successRegistro();
         }
     }
-    public void AsignacionSuceso() {
-
+    public void successRegistro() {
+        //cuando el registro es correcto te manda a explorar (es provosional)
+        Intent intent = new Intent(this, menu_nav.class);
+        startActivity(intent);
+        String msg_welcome = "Bienvenido " + nombre;
+        Toast.makeText(this, msg_welcome, Toast.LENGTH_LONG).show();
     }
     public boolean validate () {
         boolean valid = true;
