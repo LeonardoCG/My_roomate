@@ -1,19 +1,20 @@
 package com.example.my_roomate;
 
+
 import java.io.Serializable;
 
 public class Propuesta implements Serializable {
-    String _title, _description, _localization;
-    double _cost;
-    int _fav;
+    String _title, _description, _localization, _cost;
+    int _fav, _img;
     boolean _like;
-    public Propuesta(String title, String description, String localization, double cost, int fav, boolean like){
+    public Propuesta(String title, String description, String localization, String cost, int fav, boolean like, int img){
         _title = title;
         _description = description;
         _localization = localization;
         _cost = cost;
         _fav = fav;
         _like = like;
+        _img = img;
     }
 
     public String get_title() {
@@ -28,7 +29,7 @@ public class Propuesta implements Serializable {
         return _localization;
     }
 
-    public double get_cost() {
+    public String get_cost() {
         return _cost;
     }
 
@@ -38,6 +39,10 @@ public class Propuesta implements Serializable {
 
     public boolean is_like() {
         return _like;
+    }
+
+    public int get_img() {
+        return _img;
     }
 
     public void set_title(String _title) {
@@ -52,7 +57,7 @@ public class Propuesta implements Serializable {
         this._localization = _localization;
     }
 
-    public void set_cost(double _cost) {
+    public void set_cost(String _cost) {
         this._cost = _cost;
     }
 
@@ -62,5 +67,9 @@ public class Propuesta implements Serializable {
 
     public void set_like(boolean _like) {
         this._like = _like;
+    }
+
+    public void set_img(int _img) {
+        this._img = _img;
     }
 }

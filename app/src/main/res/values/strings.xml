@@ -28,5 +28,8 @@
     <string name="enviar_codigo">Enviar código</string>
     <string name="verificar_codigo">Comprobar código</string>
     <string name="verificar_codigo_cel">Introduce el código que te enviamos</string>
+    <string name="explorar_propuestas_cercanas">Propuestas cercanas</string>
+    <string name="explorar_mis_propuestas">Mis propuestas</string>
+    <string name="explorar_propuestas_vistas">Propuestas vistas</string>
 
 </resources>

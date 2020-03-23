@@ -58,7 +58,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
 
-    // recibe don parametros, nuestro item card o template y la posición donde quiero que se pinte
+    // recibe dos parametros, nuestro item card o template y la posición donde quiero que se pinte
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
         holder.bind(datos.get(position));
