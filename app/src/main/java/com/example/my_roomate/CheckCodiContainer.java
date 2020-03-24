@@ -22,7 +22,7 @@ public class CheckCodiContainer extends AppCompatActivity {
         //iniciamos el fragment
         Fragment fragment = new CodigoCel();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.check_codi_container, fragment).commit();
+        transaction.replace(R.id.check_codi_container, fragment).commit(); // en donde estoy , ¿que me vas a pintar?
     }
     //Para regresar atras en el action bar
     public boolean onSupportNavigateUp() {

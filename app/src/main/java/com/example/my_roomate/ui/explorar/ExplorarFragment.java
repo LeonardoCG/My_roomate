@@ -59,7 +59,7 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
         //implementando recycler views
         //Obtener el recycler
         recycler_propuestas_cercanas = root.findViewById(R.id.recylcer_propuestas_cercanas);
-        recycler_propuestas_cercanas.setHasFixedSize(true);
+        recycler_propuestas_cercanas.setHasFixedSize(true); //ocupe espacios el recylcer
         recycler_mis_propuestas = root.findViewById(R.id.recylcer_mis_propuestas);
         recycler_mis_propuestas.setHasFixedSize(true);
         recycler_propuestas_vistas = root.findViewById(R.id.recylcer_propuestas_vistas);
