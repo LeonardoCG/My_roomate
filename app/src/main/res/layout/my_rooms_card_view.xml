@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +6,8 @@
     app:cardCornerRadius="20sp"
     android:elevation="20sp"
     android:layout_marginBottom="10sp"
+    android:layout_marginEnd="10sp"
+    android:layout_marginStart="10sp"
     android:background="@color/icons"
     >
 
@@ -15,60 +16,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10sp">
-
-         <ImageView
-             android:id="@+id/userpicture_cv2"
-             android:layout_width="48sp"
-             android:layout_height="48sp"
-             android:scaleType="centerCrop"
-             app:srcCompat="@drawable/user"
-             />
-
-            <LinearLayout
-                android:id="@+id/userdata_cv2"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/cover_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_toEndOf="@+id/userpicture_cv2">
-                <TextView
-                    android:id="@+id/username_cv2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/segoe_ui_bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/primary_text"
-                    android:text="Username mengano"
-                    />
-                <TextView
-                    android:id="@+id/usernamelocalization_cv2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/segoeui"
-                    android:textSize="12sp"
-                    android:text="Mérida,Yuc"
-                    />
-            </LinearLayout>
-
+                android:layout_height="150sp"
+                android:scaleType="centerCrop" />
             <ImageView
                 android:id="@+id/like"
-                android:layout_width="38sp"
-                android:layout_height="38sp"
-                android:layout_alignEnd="@id/userdata_cv2"
-                app:srcCompat="@drawable/heart"
+                android:layout_width="42sp"
+                android:layout_height="42sp"
+                android:layout_alignEnd="@id/cover_card"
+                app:srcCompat="@drawable/ic_mode_edit_white_24dp"
+                android:paddingTop="10sp"
+                android:paddingEnd="10sp"
                 />
-
         </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/cover_card_cv2"
-            android:layout_width="match_parent"
-            android:layout_height="150sp"
-            android:scaleType="centerCrop" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,7 +44,7 @@
             android:paddingTop="5sp"
             android:weightSum="10">
             <TextView
-                android:id="@+id/text_head_cv2"
+                android:id="@+id/text_head_cv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/segoe_ui_bold"
@@ -130,7 +96,7 @@
             </LinearLayout>
         </LinearLayout>
         <TextView
-            android:id="@+id/text_body_cv2"
+            android:id="@+id/text_body_cv3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/segoeui"
@@ -160,7 +126,7 @@
                     android:layout_height="22sp"
                     app:srcCompat="@drawable/lugar"/>
                 <TextView
-                    android:id="@+id/text_lugar_cv2"
+                    android:id="@+id/text_lugar_cv3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -180,7 +146,7 @@
                     android:layout_height="22sp"
                     app:srcCompat="@drawable/precio"/>
                 <TextView
-                    android:id="@+id/text_precio_cv2"
+                    android:id="@+id/text_precio_cv3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
