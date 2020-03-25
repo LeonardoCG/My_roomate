@@ -22,14 +22,26 @@
         </activity>
         <activity android:name=".registro"
         android:theme="@style/AppTheme.Launcher">
+<<<<<<< HEAD
+=======
+        <activity android:name=".CheckCodiContainer"></activity>
+        <activity android:name=".Login">
+>>>>>>> 5e7d1378a716bc7f68854ff60f7eee1a3e35601a
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".Login"></activity>
         <activity android:name=".MainActivity"></activity>
 
+=======
+        <activity
+            android:name=".menu_nav"
+            android:label="@string/title_activity_menu_nav" />
+        <activity android:name=".registro" />
+>>>>>>> 5e7d1378a716bc7f68854ff60f7eee1a3e35601a
     </application>
 
 </manifest>

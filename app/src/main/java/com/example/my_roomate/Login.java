@@ -28,17 +28,17 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //vinculando recursos del layout con la clase
-        btn_continuar = (Button) findViewById(R.id.btn_continuar_login);
-        btn_facebook = (Button) findViewById(R.id.btn_facebook_login);
-        input_email = (EditText) findViewById(R.id.input_email_login);
-        input_password = (EditText) findViewById(R.id.input_password_login);
-        forget_password = (TextView) findViewById(R.id.forget_pass);
-        registrarme = (TextView) findViewById(R.id.txt_registrarse_login);
+        btn_continuar = findViewById(R.id.btn_continuar_login);
+        btn_facebook = findViewById(R.id.btn_facebook_login);
+        input_email = findViewById(R.id.input_email_login);
+        input_password = findViewById(R.id.input_password_login);
+        forget_password = findViewById(R.id.forget_pass);
+        registrarme = findViewById(R.id.txt_registrarse_login);
 
         btn_continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), menu_nav.class);
+                Intent intent = new Intent(getBaseContext(), menu_nav.class); // donde estoy , donde quiero ir
                 startActivity(intent);
             }
         });
