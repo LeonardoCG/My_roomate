@@ -22,13 +22,10 @@
     <string name="text_contraseña">Contraseña</string>
     <string name="text_contraseñaconf">Confirmar contraseña</string>
     <string name="bto_registrar">Registrarme</string>
-<<<<<<< HEAD
-=======
     <string name="forget_password">olvide mi contraseña</string>
     <string name="bto_login">CONTINUAR</string>
     <string name="description_login">No tengo una cuenta,</string>
     <string name="registrarte">Registrarme</string>
     <string name="btn_facebook">Continuar con Facebook</string>
 
->>>>>>> e1edfec6dfa766f2ebefeff8e0ca2142e9adc3de
 </resources>
