@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Codigo comprobado"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -35,7 +35,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Codigo fallido"
-            android:textColor="@color/primary_text"
+            android:textColor="#51FAED"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -46,7 +46,7 @@
             android:layout_marginTop="60dp"
             android:background="@drawable/style_borde_button"
             android:text="ok"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="20dp" />
 
 
