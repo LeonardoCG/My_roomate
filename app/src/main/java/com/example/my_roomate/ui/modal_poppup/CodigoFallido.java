@@ -1,7 +1,6 @@
 package com.example.my_roomate.ui.modal_poppup;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,19 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.content.Intent;
 
 import com.example.my_roomate.R;
 import com.example.my_roomate.menu_nav;
-import com.example.my_roomate.registro;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CheckingCodigoCel extends Fragment {
+public class CodigoFallido extends Fragment {
+    private Button btn_error;
+    View vista;
 
-    private Button btn_comprobar_codigo;
-
-    public CheckingCodigoCel() {
+    public CodigoFallido() {
         // Required empty public constructor
     }
 
@@ -31,20 +30,19 @@ public class CheckingCodigoCel extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_checking_codigo_cel, container, false);
-        //Enlazando los componentes del fragment con su clase
-        btn_comprobar_codigo = root.findViewById(R.id.btn_verificar_codigo_cel);
+        View root = inflater.inflate(R.layout.fragment_codigo_fallido, container, false);
+        btn_error = root.findViewById(R.id.btn_fallido);
 
-        btn_comprobar_codigo.setOnClickListener(new View.OnClickListener() {
-            @Override
+        btn_error.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View v) {
-                Fragment fragment = new CodigoComprobado();
+                Fragment fragment = new CodigoCel();
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.check_codi_container, fragment).commit();
             }
         });
 
+        // Inflate the layout for this fragment
         return root;
     }
 
