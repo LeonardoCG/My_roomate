@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="0sp"
+    android:elevation="20sp"
+    android:layout_marginBottom="10sp"
+    android:layout_marginEnd="10sp"
+    android:layout_marginStart="10sp"
+    android:background="@color/icons"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/divider"
+            android:padding="10sp">
+
+            <ImageView
+                android:id="@+id/userpicture_cv2"
+                android:layout_width="48sp"
+                android:layout_height="48sp"
+                android:background="@drawable/perfil"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/perfil" />
+
+            <LinearLayout
+                android:id="@+id/userdata_cv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/userpicture_cv2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/usuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:text="Jhoana Diaz"
+                    android:textColor="@color/primary_text"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/descripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:text="hola me interesa compartir.. habitacion contigo"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/hora"
+                android:layout_width="48sp"
+                android:layout_height="48sp"
+                android:layout_alignEnd="@id/userdata_cv2"
+                android:fontFamily="@font/segoeui"
+                android:text="10 hrs"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+

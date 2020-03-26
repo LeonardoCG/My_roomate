@@ -12,8 +12,6 @@
     <style name="AppTheme.Launcher">
         <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
-<<<<<<< HEAD
-=======
 
     <!-- Flat Button. -->
     <style name="PrimaryFlatButton" parent="Theme.AppCompat.Light">
@@ -22,5 +20,6 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
->>>>>>> 5e7d1378a716bc7f68854ff60f7eee1a3e35601a
+
+
 </resources>

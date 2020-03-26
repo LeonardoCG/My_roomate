@@ -26,7 +26,7 @@
              android:layout_width="48sp"
              android:layout_height="48sp"
              android:scaleType="centerCrop"
-             app:srcCompat="@drawable/user"
+             app:srcCompat="@drawable/heart"
              />
 
             <LinearLayout

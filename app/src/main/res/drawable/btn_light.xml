@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-<<<<<<< HEAD
 
     <padding android:left="10dp" android:right="10dp"/>
     <stroke android:color="@color/icons" android:width="2dp"/>
     <solid android:color="@android:color/transparent"/>
-    <corners android:radius="5dp"></corners>
-=======
+    <corners android:radius="5dp" />
     <padding android:left="10dp" android:right="10dp"/>
     <stroke android:color="@color/colorPrimary" android:width="6dp"/>
-    <corners android:radius="20dp"></corners>
->>>>>>> e1edfec6dfa766f2ebefeff8e0ca2142e9adc3de
+    <corners android:radius="20dp" />
 </shape>
