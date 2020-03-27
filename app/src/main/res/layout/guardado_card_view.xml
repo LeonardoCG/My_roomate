@@ -25,11 +25,9 @@
              android:id="@+id/userpicture_cv2"
              android:layout_width="48sp"
              android:layout_height="48sp"
-
-             android:scaleType="centerCrop"/>
-            //app:srcCompat="@drawable/user"
-
-
+             android:scaleType="centerCrop"
+             app:srcCompat="@drawable/user"
+             />
 
             <LinearLayout
                 android:id="@+id/userdata_cv2"

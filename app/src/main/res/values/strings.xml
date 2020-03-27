@@ -10,6 +10,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="title_login">My_Roomate</string>
+
+    <string name="contrasenia_cambiada">!Contraseña Cambiada¡</string>
+    <string name="ocurrio_un_error">!Ocurrio un Error¡</string>
+
     <string name="search_title">encuentra a tu roomie</string>
     <string name="text_nombre">Nombre</string>
     <string name="text_correo">Email</string>
@@ -31,5 +37,7 @@
     <string name="explorar_propuestas_cercanas">Propuestas cercanas</string>
     <string name="explorar_mis_propuestas">Mis propuestas</string>
     <string name="explorar_propuestas_vistas">Propuestas vistas</string>
+
+    <string name="title_buzon_ms">Buzón de Mensajes</string>
 
 </resources>

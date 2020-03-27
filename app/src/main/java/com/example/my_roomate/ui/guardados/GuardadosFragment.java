@@ -36,7 +36,7 @@ public class GuardadosFragment extends Fragment {
         int c1 = R.drawable.casa1;
         int c2 = R.drawable.casa2;
         int c3 = R.drawable.casa3;
-        int userpic = R.drawable.user;
+        int userpic = R.drawable.heart;
         List items_propuestas_guardadas = new ArrayList();
         items_propuestas_guardadas.add(new Propuesta("Alberto Jimenez","Mérida,Yuc","Casa Montejo","Busco rommie para compartir renta en casa Montejo","Mérida,Yuc","1200.00",4,true,c1, userpic));
         items_propuestas_guardadas.add(new Propuesta("Cecilia Aldair","Mérida,Yuc","Renta en Madero","Busco rommie para compartir renta en casa Madero","Mérida,Yuc","980.00",5,true, c2, userpic));
