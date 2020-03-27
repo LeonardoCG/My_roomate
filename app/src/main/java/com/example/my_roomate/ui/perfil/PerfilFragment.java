@@ -1,5 +1,6 @@
 package com.example.my_roomate.ui.perfil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.my_roomate.R;
+import com.example.my_roomate.menu_nav;
+import com.example.my_roomate.ui.configuracion.SettingsActivity;
 import com.example.my_roomate.ui.perfil.PerfilViewModel;
 import com.example.my_roomate.ui.propuesta.PropuestaAdd;
 
@@ -36,7 +39,8 @@ public class PerfilFragment extends Fragment {
         btn_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Cooming soon", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getActivity().getBaseContext(), SettingsActivity.class);
+                startActivity(intent);
             }
         });
 

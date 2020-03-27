@@ -1,0 +1,66 @@
+<!--
+  ~ Copyright 2018 The app Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/config_group1_title">
+
+        <Preference
+            android:icon="@drawable/user"
+            app:key="edit_perfil"
+            app:title="Editar perfil">
+
+
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/config_group2_title">
+
+        <EditTextPreference
+            android:defaultValue="false"
+            android:icon="@drawable/ic_location_on_black_24dp"
+            android:key="edit_text_preference_1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="Mérida, Yuc."
+            android:title="Ubicación" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/config_about_title">
+        <Preference
+            app:key="app_version"
+            app:title="My_Roomate"
+            app:summary="v.1.0 | Alpha MVP"
+            android:icon="@drawable/ic_announcement_black_24dp"
+            />
+        <Preference
+            app:key="app_developers"
+            app:title="Developers"
+            app:summary="JayroSalazar | Leonardo Cach | Pedro salazar"
+            android:icon="@drawable/ic_code_black_24dp"
+            />
+        <Preference
+            app:key="app_made"
+            app:summary="Hecho con amor y taquitos"
+            android:icon="@drawable/ic_favorite_border_black_24dp"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
