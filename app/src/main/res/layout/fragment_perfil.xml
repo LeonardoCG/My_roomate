@@ -2,18 +2,394 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="50sp"
+    >
 
-    <TextView
-        android:id="@+id/text_perfil"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/container_head_profile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/container_white"
+            >
+
+
+            <LinearLayout
+                android:id="@+id/container_body_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/wrap_head_profile"
+                android:elevation="20sp"
+                android:orientation="vertical"
+                android:scrollbars="vertical"
+                >
+
+                <ImageButton
+                    android:id="@+id/settings_global"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/settings"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="20sp"
+                    android:paddingBottom="10sp"
+                    />
+
+                <ImageView
+                    android:id="@+id/img_user_profile"
+                    android:layout_width="80sp"
+                    android:layout_height="80sp"
+                    app:srcCompat="@drawable/ic_account_circle_blue_grey_50_24dp"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:id="@+id/name_user_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:textColor="@color/icons"
+                    android:text="John Doe"
+                    android:layout_marginTop="-15sp"
+                    android:textSize="35sp"
+                    android:textAlignment="center"
+                    />
+                <TextView
+                    android:id="@+id/ubication_user_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="@color/icons"
+                    android:layout_marginTop="-5sp"
+                    android:paddingBottom="20sp"
+                    android:text="Mérida, Yuc."
+                    android:textSize="14sp"
+                    android:textAlignment="center"
+                    />
+                <TextView
+                    android:id="@+id/bio_user_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/segoeui"
+                    android:textColor="@color/icons"
+                    android:paddingLeft="15sp"
+                    android:paddingRight="15sp"
+                    android:paddingBottom="5sp"
+                    android:text="Soy un geek creativo de Mérida Yuc. Disfruto los caramelos así como crear soluciones web o apps mobiles. Contactame como john@mail.com"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    android:paddingEnd="20sp"
+                    android:paddingStart="20sp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingTop="20sp"
+                        android:paddingBottom="5sp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/img_phone_profile"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            app:srcCompat="@drawable/ic_phone_white_24dp"
+                            />
+                        <TextView
+                            android:id="@+id/txt_phone_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28sp"
+                            android:text="+52 997-139-8592"
+                            android:textColor="@color/icons"
+                            android:textSize="12sp"
+                            android:gravity="center_horizontal"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/segoeui"
+                            android:layout_toEndOf="@+id/img_phone_profile"
+                            />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingTop="20sp"
+                        android:paddingBottom="5sp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/ubication_profile"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            app:srcCompat="@drawable/ic_location_on_white_24dp"
+                            />
+                        <TextView
+                            android:id="@+id/txt_ubication_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28sp"
+                            android:text="C.32 X 18/20, Mérida,Yuc"
+                            android:textColor="@color/icons"
+                            android:textSize="12sp"
+                            android:gravity="center_horizontal"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/segoeui"
+                            android:layout_toEndOf="@+id/ubication_profile"
+                            />
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:text="Intereses"
+                android:textColor="@color/secondary_text"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/segoe_ui_bold"
+                />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:alignmentMode="alignMargins"
+                android:columnCount="3"
+                android:orientation="horizontal"
+                android:paddingStart="15sp"
+                android:paddingEnd="15sp">
+
+                <TextView
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="10sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Anime"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="10sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Viajes"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Musica"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Libros"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Politica"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Tecnología"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+            </GridLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:text="Has proporcionado"
+                android:textColor="@color/secondary_text"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/segoe_ui_bold"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:paddingEnd="15sp"
+                android:paddingStart="15sp"
+                android:paddingBottom="10sp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    >
+
+                    <ImageView
+                        android:id="@+id/data_check_profile"
+                        android:layout_width="48sp"
+                        android:layout_height="48sp"
+                        app:srcCompat="@drawable/ic_check_circle_orange_900_24dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="48sp"
+                        android:text="Identificación"
+                        android:textColor="@color/primary_text"
+                        android:textSize="12sp"
+                        android:layout_marginStart="5sp"
+                        android:gravity="center_vertical"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/segoeui"
+                        android:layout_toEndOf="@+id/data_check_profile"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    >
+
+                    <ImageView
+                        android:id="@+id/data_check_profile2"
+                        android:layout_width="48sp"
+                        android:layout_height="48sp"
+                        app:srcCompat="@drawable/ic_check_circle_orange_900_24dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="48sp"
+                        android:text="Foto de perfil"
+                        android:textColor="@color/primary_text"
+                        android:textSize="12sp"
+                        android:layout_marginStart="5sp"
+                        android:gravity="center_vertical"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/segoeui"
+                        android:layout_toEndOf="@+id/data_check_profile2"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:paddingEnd="15sp"
+                android:paddingStart="15sp"
+                >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    >
+
+                    <ImageView
+                        android:id="@+id/data_check_profile3"
+                        android:layout_width="48sp"
+                        android:layout_height="48sp"
+                        app:srcCompat="@drawable/ic_check_circle_orange_900_24dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="48sp"
+                        android:text="Dirección"
+                        android:textColor="@color/primary_text"
+                        android:textSize="12sp"
+                        android:layout_marginStart="5sp"
+                        android:gravity="center_vertical"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/segoeui"
+                        android:layout_toEndOf="@+id/data_check_profile3"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    >
+
+                    <ImageView
+                        android:id="@+id/data_check_profile4"
+                        android:layout_width="48sp"
+                        android:layout_height="48sp"
+                        app:srcCompat="@drawable/ic_check_circle_orange_900_24dp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="48sp"
+                        android:text="Telefono"
+                        android:textColor="@color/primary_text"
+                        android:textSize="12sp"
+                        android:layout_marginStart="5sp"
+                        android:gravity="center_vertical"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/segoeui"
+                        android:layout_toEndOf="@+id/data_check_profile4"
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
