@@ -9,7 +9,6 @@ import java.io.Serializable;
 public class Buzon implements Serializable {
     String _usuario, _descripcion;
     int _hora, _img;
-
     public Buzon(String usuario, String descripcion, int hora, int img)
     {
         _usuario = usuario;

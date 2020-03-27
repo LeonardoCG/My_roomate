@@ -17,7 +17,7 @@
             android:text="@string/title_buzon_ms"
             android:textColor="@color/icons"
             android:fontFamily="@font/segoe_ui_bold"
-            android:textSize="20sp"
+            android:textSize="35sp"
             android:textStyle="bold"
             android:textAlignment="center"
             android:paddingTop="30sp"

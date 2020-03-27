@@ -18,13 +18,14 @@ public class BuzonAdapter extends RecyclerView.Adapter<BuzonAdapter.ViewHolderBu
     public class ViewHolderBuzon extends RecyclerView.ViewHolder {
 
         //campos respectivos al CardView
-        public TextView txt_head, txt_body;
+        public TextView txt_head, txt_body, txt_time;
 
 
         public ViewHolderBuzon(View v) {
             super(v);
             txt_head = v.findViewById(R.id.usuario);
             txt_body = v.findViewById(R.id.descripcion);
+            txt_time = v.findViewById(R.id.hora);
 
         }
     }
@@ -50,6 +51,8 @@ public class BuzonAdapter extends RecyclerView.Adapter<BuzonAdapter.ViewHolderBu
     public void onBindViewHolder(@NonNull BuzonAdapter.ViewHolderBuzon viewHolder, int i) {
         viewHolder.txt_head.setText(items.get(i).get_usuario());
         viewHolder.txt_body.setText(items.get(i).get_descripcion());
+        String time = items.get(i).get_hora() + "hrs";
+        viewHolder.txt_time.setText(time);
 
     }
 
