@@ -81,11 +81,81 @@
                     android:textColor="@color/icons"
                     android:paddingLeft="15sp"
                     android:paddingRight="15sp"
-                    android:paddingBottom="20sp"
+                    android:paddingBottom="5sp"
                     android:text="Soy un geek creativo de Mérida Yuc. Disfruto los caramelos así como crear soluciones web o apps mobiles. Contactame como john@mail.com"
                     android:textSize="18sp"
                     android:textAlignment="center"
                     />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    android:paddingEnd="20sp"
+                    android:paddingStart="20sp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingTop="20sp"
+                        android:paddingBottom="5sp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/img_phone_profile"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            app:srcCompat="@drawable/ic_phone_white_24dp"
+                            />
+                        <TextView
+                            android:id="@+id/txt_phone_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28sp"
+                            android:text="+52 997-139-8592"
+                            android:textColor="@color/icons"
+                            android:textSize="12sp"
+                            android:gravity="center_horizontal"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/segoeui"
+                            android:layout_toEndOf="@+id/img_phone_profile"
+                            />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:paddingTop="20sp"
+                        android:paddingBottom="5sp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/ubication_profile"
+                            android:layout_width="24sp"
+                            android:layout_height="24sp"
+                            app:srcCompat="@drawable/ic_location_on_white_24dp"
+                            />
+                        <TextView
+                            android:id="@+id/txt_ubication_profile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="28sp"
+                            android:text="C.32 X 18/20, Mérida,Yuc"
+                            android:textColor="@color/icons"
+                            android:textSize="12sp"
+                            android:gravity="center_horizontal"
+                            android:textAlignment="center"
+                            android:fontFamily="@font/segoeui"
+                            android:layout_toEndOf="@+id/ubication_profile"
+                            />
+
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
