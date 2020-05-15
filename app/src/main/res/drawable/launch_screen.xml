@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:opacity="opaque">
-    <item android:drawable="@android:color/white"/>
+    <item android:drawable="@drawable/gradient_color"/>
     <item>
         <bitmap
-            android:src="@drawable/backpack"
-            android:gravity="center"/>
+            android:src="@drawable/backpack_white"
+            android:gravity="center"
+            />
     </item>
 </layer-list>

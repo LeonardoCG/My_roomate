@@ -29,11 +29,10 @@
                 android:layout_width="42sp"
                 android:layout_height="42sp"
                 android:layout_alignEnd="@id/cover_card"
-
+                app:srcCompat="@drawable/ic_mode_edit_white_24dp"
                 android:paddingTop="10sp"
                 android:paddingEnd="10sp"
                 />
-            //app:srcCompat="@drawable/ic_mode_edit_white_24dp"//
         </RelativeLayout>
 
         <LinearLayout

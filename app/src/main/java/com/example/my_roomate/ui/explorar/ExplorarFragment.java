@@ -1,5 +1,9 @@
 package com.example.my_roomate.ui.explorar;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
@@ -24,7 +28,10 @@ import com.example.my_roomate.PropuestaAdapter;
 import com.example.my_roomate.R;
 import com.example.my_roomate.RecyclerAdapter;
 import com.example.my_roomate.ui.explorar.ExplorarViewModel;
+import com.example.my_roomate.Utils.utils;
+import com.example.my_roomate.OpenHelper.SQLiteOpenHelper;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +39,7 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
     private ExplorarViewModel explorarViewModel;
     private RecyclerView recycler_propuestas_cercanas, recycler_mis_propuestas, recycler_propuestas_vistas;
     private RecyclerView.Adapter adapter_propuestas_cercanas, adapter_mis_propuestas, adapter_propuestas_vistas;
+    SQLiteOpenHelper conn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -78,6 +86,7 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
         adapter_propuestas_vistas = new PropuestaAdapter(items_propuestas_vistas);
         recycler_propuestas_vistas.setAdapter(adapter_propuestas_vistas);
 
+        conn = new SQLiteOpenHelper(getContext(),utils.dbName,null,utils.db_version);
 
         return root;
     }
@@ -85,5 +94,35 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
     @Override
     public void onItemClick(int index) {
 
+    }
+
+    //Prueba para saber si la BD esta ok
+    //Estructura de como insertar un dato en la bd
+    public void insertUser(){
+        SQLiteDatabase db = conn.getWritableDatabase();
+
+        //Manejo de imagenes
+        Bitmap image = BitmapFactory.decodeResource(getResources(),R.drawable.perfil);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.PNG,100,stream);
+        byte[] imageInByte = stream.toByteArray();
+
+
+        ContentValues val = new ContentValues();
+        val.put(utils.id_user, utils.getLastID(utils.table_user,conn)+1);
+        val.put(utils.names_user,"Lia Euegenia");
+        val.put(utils.lastnames_user,"Salazar Gonzales");
+        val.put(utils.address_user,"");
+        val.put(utils.ubication_user,"");
+        val.put(utils.phone_user,"");
+        val.put(utils.bio_user,"");
+        val.put(utils.curp_user,"");
+        val.put(utils.email_user,"lesg@gmail.com");
+        val.put(utils.password_user,"12e423eed");
+        val.put(utils.photo_user,imageInByte);
+
+        Long res = db.insert(utils.table_user,utils.id_user,val);
+
+        Toast.makeText(getContext(),"id registrado "+res,Toast.LENGTH_SHORT).show();
     }
 }
