@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.view.View;
 import android.widget.Toast;
+import android.content.ContentValues;
+
+import com.example.my_roomate.OpenHelper.SQLiteOpenHelper;
+import com.example.my_roomate.Utils.utils;
 
 import static android.content.Context.MODE_PRIVATE;
 import java.lang.*;
@@ -19,12 +24,14 @@ public class registro extends AppCompatActivity {
 
     private EditText et_nombre, et_correo, et_contraseña, et_confirmar;
     private String nombre, correo, contraseña, confcontraseña;
+    SQLiteOpenHelper conn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme);//Ajustamos para que este sea el tema a cargar
         setContentView(R.layout.activity_registro);
+
         //Setiar el action bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Activar la flecha de atras
         getSupportActionBar().setElevation(0); //quitar la elevación
@@ -35,27 +42,30 @@ public class registro extends AppCompatActivity {
         et_contraseña = (EditText)findViewById(R.id.text_contraseña);
         et_confirmar = (EditText)findViewById(R.id.text_contraseñaconf);
     }
-
     //Para regresar atras en el action bar
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return false;
     }
-    //Metodo para el boton de registrarse
-    public void Guardar(View view){
-        String nombre = et_nombre.getText().toString();
-        String correo = et_correo.getText().toString();
-        String contraseña = et_contraseña.getText().toString();
-        String confirmar = et_confirmar.getText().toString();
+    public void onClick(View view) {
+        registrarUsuarios();
+        //registrarUsuariosSql();
+    }
 
-        SharedPreferences preferencias= getSharedPreferences("registro",Context.MODE_PRIVATE);
-        SharedPreferences.Editor obj_editor = preferencias.edit();
-        obj_editor.putString(nombre, correo);
-        obj_editor.putString(nombre, contraseña);
-        obj_editor.putString(nombre,confirmar);
-        obj_editor.commit();
+    private void registrarUsuarios() {
+        SQLiteOpenHelper conn= new  SQLiteOpenHelper (this,"roomate-app",null,1);
+        SQLiteDatabase db = conn.getWritableDatabase();
 
-        //Toast.makeText(this, "El contacto ha sido guardado", Toast.LENGTH_LONG).show();
+        ContentValues values=new ContentValues();
+        values.put(utils.names_user,et_nombre.getText().toString());
+        values.put(utils.email_user,et_correo.getText().toString());
+        values.put(utils.password_user,et_contraseña.getText().toString());
+        values.put(utils.password_user,et_confirmar.getText().toString());
+
+        Long res = db.insert(utils.table_user,utils.id_user,values);
+
+        Toast.makeText(getApplicationContext(),"Id Registro: "+res,Toast.LENGTH_SHORT).show();
+        db.close();
 
         inicialise ();
         if (!validate()) {

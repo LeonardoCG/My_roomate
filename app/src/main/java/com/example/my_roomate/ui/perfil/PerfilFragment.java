@@ -1,6 +1,10 @@
 package com.example.my_roomate.ui.perfil;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,18 +20,27 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.my_roomate.OpenHelper.SQLiteOpenHelper;
 import com.example.my_roomate.R;
+import com.example.my_roomate.Utils.utils;
 import com.example.my_roomate.menu_nav;
 import com.example.my_roomate.ui.configuracion.SettingsActivity;
 import com.example.my_roomate.ui.perfil.PerfilViewModel;
 import com.example.my_roomate.ui.propuesta.PropuestaAdd;
+import android.widget.EditText;
+import android.view.View;
+
+import java.io.ByteArrayOutputStream;
 
 public class PerfilFragment extends Fragment {
     private PerfilViewModel perfilViewModel;
     private ImageButton btn_setting;
+    SQLiteOpenHelper conn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        conn = new SQLiteOpenHelper(getContext(),"roomate-app",null,1);
         perfilViewModel =
                 ViewModelProviders.of(this).get(PerfilViewModel.class);
         View root = inflater.inflate(R.layout.fragment_perfil, container, false);
@@ -45,5 +58,6 @@ public class PerfilFragment extends Fragment {
         });
 
         return root;
-    }
+            }
+
 }

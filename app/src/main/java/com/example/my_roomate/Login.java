@@ -38,7 +38,7 @@ public class Login extends AppCompatActivity {
         btn_continuar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), menu_nav.class); // donde estoy , donde quiero ir
+                Intent intent = new Intent(getBaseContext(), ConsultarUsuariosActivity.class); // donde estoy , donde quiero ir
                 startActivity(intent);
             }
         });

@@ -96,33 +96,4 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
 
     }
 
-    //Prueba para saber si la BD esta ok
-    //Estructura de como insertar un dato en la bd
-    public void insertUser(){
-        SQLiteDatabase db = conn.getWritableDatabase();
-
-        //Manejo de imagenes
-        Bitmap image = BitmapFactory.decodeResource(getResources(),R.drawable.perfil);
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG,100,stream);
-        byte[] imageInByte = stream.toByteArray();
-
-
-        ContentValues val = new ContentValues();
-        val.put(utils.id_user, utils.getLastID(utils.table_user,conn)+1);
-        val.put(utils.names_user,"Lia Euegenia");
-        val.put(utils.lastnames_user,"Salazar Gonzales");
-        val.put(utils.address_user,"");
-        val.put(utils.ubication_user,"");
-        val.put(utils.phone_user,"");
-        val.put(utils.bio_user,"");
-        val.put(utils.curp_user,"");
-        val.put(utils.email_user,"lesg@gmail.com");
-        val.put(utils.password_user,"12e423eed");
-        val.put(utils.photo_user,imageInByte);
-
-        Long res = db.insert(utils.table_user,utils.id_user,val);
-
-        Toast.makeText(getContext(),"id registrado "+res,Toast.LENGTH_SHORT).show();
-    }
 }

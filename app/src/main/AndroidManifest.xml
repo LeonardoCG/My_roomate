@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ConsultarUsuariosActivity"></activity>
         <activity
             android:name=".ui.configuracion.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
         <activity android:name=".Buzon" />
         <activity android:name=".BuzonAdapter" />
         <activity
@@ -29,7 +30,9 @@
             android:name=".registro"
             android:theme="@style/AppTheme.Launcher" />
         <activity android:name=".CheckCodiContainer" />
-        <activity android:name=".Login" android:theme="@style/AppTheme.Launcher">
+        <activity
+            android:name=".Login"
+            android:theme="@style/AppTheme.Launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
