@@ -1,5 +1,6 @@
 package com.example.my_roomate.Utils;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -147,12 +148,18 @@ public class utils {
     public static final String create_offer = String.format("CREATE TABLE %s (%s INTEGER, %s INTEGER, %s INTEGER)"
             ,table_offer, id_offer, id_user_in_offer, id_proposal_in_offer);
 
+
+    //Variables que se van a compartir
+    public static final String SHARED_FILE = "u_sesion";
+    //Usuario
+    public static final String shared_id_user = "id_user";
+
     //Obtener id siguiente
-    public static int getLastID(String table, SQLiteOpenHelper conn){
+    public static int getLastID(String table, String id, SQLiteOpenHelper conn){
         try {
             SQLiteDatabase db = conn.getReadableDatabase();
 
-            String query = "SELECT id FROM "+table+" ORDER by id DESC";
+            String query = "SELECT "+id+" FROM "+table+" ORDER by "+id+" DESC";
             Cursor c = db.rawQuery(query,null);
             c.moveToFirst();
             return c.getShort(0);
@@ -160,6 +167,11 @@ public class utils {
         catch (Exception ex){
             return 0;
         }
+    }
+
+    //id de usuario compartido
+    public static int getSharedUid(SharedPreferences preferences){
+        return preferences.getInt(utils.shared_id_user,0);
     }
 
 }

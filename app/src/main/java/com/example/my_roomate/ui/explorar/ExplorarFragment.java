@@ -1,6 +1,8 @@
 package com.example.my_roomate.ui.explorar;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -40,6 +42,7 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
     private RecyclerView recycler_propuestas_cercanas, recycler_mis_propuestas, recycler_propuestas_vistas;
     private RecyclerView.Adapter adapter_propuestas_cercanas, adapter_mis_propuestas, adapter_propuestas_vistas;
     SQLiteOpenHelper conn;
+    SharedPreferences preferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +63,8 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
         items_propuestas_vistas.add(new Propuesta("Casa en Centro","Casa para dos rommies en centro","Mérida,Yuc","1500.00",4,false,c1));
         items_propuestas_vistas.add(new Propuesta("Casa Montejo","Busco rommie para compartir renta en casa Montejo","Mérida,Yuc","1200.00",4,false,c1));
         items_propuestas_vistas.add(new Propuesta("Casa por TEC","Compartamos renta, casa por el tec poniente","Mérida,Yuc","800.00",0,false, c3));
+        //asignando los datos guardadados globalmente
+        preferences = this.getActivity().getSharedPreferences(utils.SHARED_FILE, Context.MODE_PRIVATE);
 
         explorarViewModel =
                 ViewModelProviders.of(this).get(ExplorarViewModel.class);
@@ -87,7 +92,7 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
         recycler_propuestas_vistas.setAdapter(adapter_propuestas_vistas);
 
         conn = new SQLiteOpenHelper(getContext(),utils.dbName,null,utils.db_version);
-
+        loadSharedPreferences();
         return root;
     }
 
@@ -109,20 +114,25 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
 
 
         ContentValues val = new ContentValues();
-        val.put(utils.id_user, utils.getLastID(utils.table_user,conn)+1);
-        val.put(utils.names_user,"Lia Euegenia");
-        val.put(utils.lastnames_user,"Salazar Gonzales");
-        val.put(utils.address_user,"");
-        val.put(utils.ubication_user,"");
-        val.put(utils.phone_user,"");
-        val.put(utils.bio_user,"");
-        val.put(utils.curp_user,"");
-        val.put(utils.email_user,"lesg@gmail.com");
-        val.put(utils.password_user,"12e423eed");
+        val.put(utils.id_user, utils.getLastID(utils.table_user,"id_user",conn)+1);
+        val.put(utils.names_user,"Aurora");
+        val.put(utils.lastnames_user,"Yam Caamal");
+        val.put(utils.address_user,"C 16 x 17 y 219");
+        val.put(utils.ubication_user,"Pomuch");
+        val.put(utils.phone_user,"9912382912");
+        val.put(utils.bio_user,"Amante de las buenas series");
+        val.put(utils.curp_user,"HSIDJHU38283H2E34R");
+        val.put(utils.email_user,"aurora@gmail.com");
+        val.put(utils.password_user,"root");
         val.put(utils.photo_user,imageInByte);
 
         Long res = db.insert(utils.table_user,utils.id_user,val);
 
         Toast.makeText(getContext(),"id registrado "+res,Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadSharedPreferences(){
+        int uid = utils.getSharedUid(preferences);
+        Toast.makeText(getContext(),"Usuario id: " + uid,Toast.LENGTH_LONG).show();
     }
 }
