@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -15,14 +16,26 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.my_roomate.Interface.JsonServer;
+import com.example.my_roomate.Model.User;
 import com.example.my_roomate.OpenHelper.SQLiteOpenHelper;
 import com.example.my_roomate.Utils.utils;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Login extends AppCompatActivity {
 
     private Button btn_continuar, btn_facebook;
     private EditText input_email, input_password;
     private TextView forget_password, registrarme;
+    private String res;
+
     SQLiteOpenHelper conn;
 
     @Override
@@ -34,6 +47,8 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_login);
+        getUser();
+
 
         //Configurar los parametros para realizar consultas a la bd
         conn = new SQLiteOpenHelper(this,utils.dbName,null,utils.db_version);
@@ -115,5 +130,44 @@ public class Login extends AppCompatActivity {
         SharedPreferences.Editor edit = preferences.edit();
         edit.putInt(utils.shared_id_user,id);
         edit.commit();
+    }
+
+    private void getUser(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://my-json-server.typicode.com/Megajjks/dbroomate/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        //llamando a la interfaz
+        JsonServer jsonServer = retrofit.create(JsonServer.class);
+        //llamamos al método de la interfaz que vamos a usar
+        Call<List<User>> call = jsonServer.getUsers();
+        //creando la respuesta (si hubo error o fue exitoso)
+        call.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                //si la respuesta llego pero hubo un problema como error de auth
+                if(!response.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),"codigo: " +response.code(),Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                //sitodo salio bien pues traemos la respuesta
+                List<User> listaUser = response.body();
+                //acomodamos el contenido que vamos a traer en el response
+                for (User user: listaUser ){
+                    String content = "";
+                    content += "id_user:" + user.getId_user() + "\n";
+                    content += "email:" + user.getEmail() + "\n";
+                    content += "password:" + user.getPassword() + "\n";
+                    res += content;
+                }
+                Toast.makeText(getApplicationContext(),res,Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
