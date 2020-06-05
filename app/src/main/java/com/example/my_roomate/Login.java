@@ -21,6 +21,7 @@ import com.example.my_roomate.Model.User;
 import com.example.my_roomate.OpenHelper.SQLiteOpenHelper;
 import com.example.my_roomate.Utils.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,6 +36,7 @@ public class Login extends AppCompatActivity {
     private EditText input_email, input_password;
     private TextView forget_password, registrarme;
     private String res;
+    private List<User> resposeUser;
 
     SQLiteOpenHelper conn;
 
@@ -46,6 +48,7 @@ public class Login extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
+        resposeUser = new ArrayList(); //Array donde se almacenaran mis usuarios que traiga en la api
         setContentView(R.layout.activity_login);
         getUser();
 
@@ -98,6 +101,7 @@ public class Login extends AppCompatActivity {
 
     }
     private void login(){
+        /*
         SQLiteDatabase db = conn.getReadableDatabase();
         //Se crear un arreglo asigando los valores del input email y password
         String[] args = new String[]{
@@ -108,7 +112,9 @@ public class Login extends AppCompatActivity {
                 utils.table_user,utils.email_user,utils.password_user);
         Cursor c = db.rawQuery(query,args);
         c.moveToFirst();
+
         if(c.getCount()>0) {
+
             savePreferene(c.getInt(0));
             c.close();
             //EventActivity();
@@ -116,7 +122,15 @@ public class Login extends AppCompatActivity {
         }
         else
             Toast.makeText(getApplicationContext(),"No se encontraron coincidencias",Toast.LENGTH_SHORT).show();
-        c.close();
+        */
+        for(User user: resposeUser){
+            if(input_email.getText().toString().equals(user.getEmail()) && input_password.getText().toString().equals(user.getPassword())){
+                savePreferene(Integer.parseInt(user.getId_user()));
+                succesCheck();
+                return;
+            }
+        }
+        Toast.makeText(getApplicationContext(),"No se encontraron coincidencias",Toast.LENGTH_SHORT).show();
     }
 
     //Intent que me llevara al explore en caso de que mis credenciales sean validadas de forma correcta
@@ -155,13 +169,8 @@ public class Login extends AppCompatActivity {
                 List<User> listaUser = response.body();
                 //acomodamos el contenido que vamos a traer en el response
                 for (User user: listaUser ){
-                    String content = "";
-                    content += "id_user:" + user.getId_user() + "\n";
-                    content += "email:" + user.getEmail() + "\n";
-                    content += "password:" + user.getPassword() + "\n";
-                    res += content;
+                    resposeUser.add(new User(user.getId_user(),user.getEmail(),user.getPassword()));
                 }
-                Toast.makeText(getApplicationContext(),res,Toast.LENGTH_SHORT).show();
             }
 
             @Override
