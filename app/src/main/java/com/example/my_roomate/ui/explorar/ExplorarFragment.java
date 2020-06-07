@@ -25,6 +25,8 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.my_roomate.Interface.JsonServer;
+import com.example.my_roomate.Model.User;
 import com.example.my_roomate.Propuesta;
 import com.example.my_roomate.PropuestaAdapter;
 import com.example.my_roomate.R;
@@ -33,9 +35,16 @@ import com.example.my_roomate.ui.explorar.ExplorarViewModel;
 import com.example.my_roomate.Utils.utils;
 import com.example.my_roomate.OpenHelper.SQLiteOpenHelper;
 
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItemClickListenner {
     private ExplorarViewModel explorarViewModel;
@@ -43,6 +52,7 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
     private RecyclerView.Adapter adapter_propuestas_cercanas, adapter_mis_propuestas, adapter_propuestas_vistas;
     SQLiteOpenHelper conn;
     SharedPreferences preferences;
+    private Retrofit retrofit;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -91,6 +101,12 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
         adapter_propuestas_vistas = new PropuestaAdapter(items_propuestas_vistas);
         recycler_propuestas_vistas.setAdapter(adapter_propuestas_vistas);
 
+        retrofit = new Retrofit.Builder()
+                .baseUrl("https://my-json-server.typicode.com/Megajjks/dbroomate/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        obtenerPropuestas();
+
         conn = new SQLiteOpenHelper(getContext(),utils.dbName,null,utils.db_version);
         loadSharedPreferences();
         return root;
@@ -101,38 +117,37 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
 
     }
 
-    //Prueba para saber si la BD esta ok
-    //Estructura de como insertar un dato en la bd
-    public void insertUser(){
-        SQLiteDatabase db = conn.getWritableDatabase();
+    public void obtenerPropuestas(){
+        //llamando a la interfaz
+        JsonServer jsonServer = retrofit.create(JsonServer.class);
+        //llamamos al método de la interfaz que vamos a usar
+        Call<List<Propuesta>> call = jsonServer.getPropuestas();
+        //creando la respuesta (si hubo error o fue exitoso)
+        call.enqueue(new Callback<List<Propuesta>>() {
+            @Override
+            public void onResponse(Call<List<Propuesta>> call, Response<List<Propuesta>> response) {
+                //si la respuesta llego pero hubo un problema como error de auth
+                if(!response.isSuccessful()){
+                    Toast.makeText(getActivity().getBaseContext(),"codigo: " +response.code(),Toast.LENGTH_SHORT).show();
+                    //sitodo salio bien pues traemos la respuesta
+                    return;
+                }
+                List<Propuesta> listaUser = response.body();
 
-        //Manejo de imagenes
-        Bitmap image = BitmapFactory.decodeResource(getResources(),R.drawable.perfil);
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.PNG,100,stream);
-        byte[] imageInByte = stream.toByteArray();
 
+            }
 
-        ContentValues val = new ContentValues();
-        val.put(utils.id_user, utils.getLastID(utils.table_user,"id_user",conn)+1);
-        val.put(utils.names_user,"Aurora");
-        val.put(utils.lastnames_user,"Yam Caamal");
-        val.put(utils.address_user,"C 16 x 17 y 219");
-        val.put(utils.ubication_user,"Pomuch");
-        val.put(utils.phone_user,"9912382912");
-        val.put(utils.bio_user,"Amante de las buenas series");
-        val.put(utils.curp_user,"HSIDJHU38283H2E34R");
-        val.put(utils.email_user,"aurora@gmail.com");
-        val.put(utils.password_user,"root");
-        val.put(utils.photo_user,imageInByte);
-
-        Long res = db.insert(utils.table_user,utils.id_user,val);
-
-        Toast.makeText(getContext(),"id registrado "+res,Toast.LENGTH_SHORT).show();
+            @Override
+            public void onFailure(Call<List<Propuesta>> call, Throwable t) {
+                Toast.makeText(getActivity().getBaseContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+
     private void loadSharedPreferences(){
-        int uid = utils.getSharedUid(preferences);
+        //int uid = utils.getSharedUid(preferences);
+        String uid = utils.getShared_names(preferences);
         Toast.makeText(getContext(),"Usuario id: " + uid,Toast.LENGTH_LONG).show();
     }
 }

@@ -153,6 +153,22 @@ public class utils {
     public static final String SHARED_FILE = "u_sesion";
     //Usuario
     public static final String shared_id_user = "id_user";
+    public static final String shared_names = "names";
+    public static final String shared_last_name = "last_name";
+    public static final String shared_address = "address";
+    public static final String shared_ubication = "ubication";
+    public static final String shared_phone = "phone";
+    public static final String shared_bio = "bio";
+    public static final String shared_curp = "curp";
+    public static final String shared_photo_profile = "photo_profile";
+    public static final String shared_interestings1 = "interestings1";
+    public static final String shared_interestings2 = "interestings2";
+    public static final String shared_interestings3 = "interestings3";
+    public static final String shared_interestings4 = "interestings4";
+    public static final String shared_interestings5 = "interestings5";
+    public static final String shared_interestings6 = "interestings6";
+
+
 
     //Obtener id siguiente
     public static int getLastID(String table, String id, SQLiteOpenHelper conn){
@@ -173,5 +189,60 @@ public class utils {
     public static int getSharedUid(SharedPreferences preferences){
         return preferences.getInt(utils.shared_id_user,0);
     }
+    //name de usuario compartido
+    public static String getShared_names(SharedPreferences preferences){
+        return preferences.getString(utils.shared_names,"");
+    }
 
+    public static String getShared_last_name(SharedPreferences preferences) {
+        return preferences.getString(utils.shared_last_name,"");
+    }
+
+    public static String getShared_address(SharedPreferences preferences) {
+        return preferences.getString(utils.shared_address,"");
+    }
+
+    public static String getShared_ubication(SharedPreferences preferences) {
+        return preferences.getString(utils.shared_ubication,"");
+    }
+
+    public static String getShared_phone(SharedPreferences preferences) {
+        return preferences.getString(utils.shared_phone,"");
+    }
+
+    public static String getShared_bio(SharedPreferences preferences) {
+        return preferences.getString(utils.shared_bio,"");
+    }
+
+    public static String getShared_curp(SharedPreferences preferences) {
+        return preferences.getString(utils.shared_curp,"");
+    }
+
+    public static String getShared_photo_profile(SharedPreferences preferences) {
+        return preferences.getString(utils.shared_photo_profile,"");
+    }
+
+    public static String getShared_interestings1(SharedPreferences preferences){
+        return preferences.getString(utils.shared_interestings1, "");
+    }
+
+    public static String getShared_interestings2(SharedPreferences preferences){
+        return preferences.getString(utils.shared_interestings2, "");
+    }
+
+    public static String getShared_interestings3(SharedPreferences preferences){
+        return preferences.getString(utils.shared_interestings3, "");
+    }
+
+    public static String getShared_interestings4(SharedPreferences preferences){
+        return preferences.getString(utils.shared_interestings4, "");
+    }
+
+    public static String getShared_interestings5(SharedPreferences preferences){
+        return preferences.getString(utils.shared_interestings5, "");
+    }
+
+    public static String getShared_interestings6(SharedPreferences preferences){
+        return preferences.getString(utils.shared_interestings6, "");
+    }
 }

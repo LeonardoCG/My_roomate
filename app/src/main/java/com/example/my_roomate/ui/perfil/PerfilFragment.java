@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.my_roomate.Interface.JsonServer;
 import com.example.my_roomate.Model.User;
 import com.example.my_roomate.R;
@@ -40,7 +44,10 @@ public class PerfilFragment extends Fragment {
     private PerfilViewModel perfilViewModel;
     private ImageButton btn_setting;
     private List<User> resposeUser;
+    private ImageView img_user;
+    private TextView name_user,ubication_user,bio_user,phone,address,inte1,inte2,inte3,inte4,inte5,inte6;
     SharedPreferences preferences;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -62,46 +69,40 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        getUser();
-
+        //asignando los datos guardadados globalmente
+        preferences = this.getActivity().getSharedPreferences(utils.SHARED_FILE, Context.MODE_PRIVATE);
+        //relacionamos la clase con la vista
+        name_user = root.findViewById(R.id.name_user_profile);
+        ubication_user = root.findViewById(R.id.ubication_user_profile);
+        bio_user = root.findViewById(R.id.bio_user_profile);
+        phone = root.findViewById(R.id.txt_phone_profile);
+        address = root.findViewById(R.id.txt_ubication_profile);
+        inte1 = root.findViewById(R.id.interes1);
+        inte2 = root.findViewById(R.id.interes2);
+        inte3 = root.findViewById(R.id.interes3);
+        inte4 = root.findViewById(R.id.interes4);
+        inte5 = root.findViewById(R.id.interes5);
+        inte6 = root.findViewById(R.id.interes6);
+        img_user = root.findViewById(R.id.img_user_profile);
+        //Se pintan los datos a la vista
+        name_user.setText(utils.getShared_names(preferences) + " " + utils.getShared_last_name(preferences));
+        ubication_user.setText(utils.getShared_ubication(preferences));
+        bio_user.setText(utils.getShared_bio(preferences));
+        phone.setText(utils.getShared_phone(preferences));
+        address.setText(utils.getShared_address(preferences));
+        inte1.setText(utils.getShared_interestings1(preferences));
+        inte2.setText(utils.getShared_interestings2(preferences));
+        inte3.setText(utils.getShared_interestings3(preferences));
+        inte4.setText(utils.getShared_interestings4(preferences));
+        inte5.setText(utils.getShared_interestings5(preferences));
+        inte6.setText(utils.getShared_interestings6(preferences));
+        //se realiza la consulta a la api para obtener la imagen del perfil
+        Glide.with(getActivity().getApplicationContext())
+                .load(utils.getShared_photo_profile(preferences))
+                .placeholder(R.drawable.ic_account_circle_blue_grey_50_24dp)
+                .circleCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(img_user);
         return root;
-    }
-
-    private void getUser(){
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://my-json-server.typicode.com/Megajjks/dbroomate/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        //llamando a la interfaz
-        JsonServer jsonServer = retrofit.create(JsonServer.class);
-        //llamamos al método de la interfaz que vamos a usar
-        Call<List<User>> call = jsonServer.getUsers();
-        //creando la respuesta (si hubo error o fue exitoso)
-        call.enqueue(new Callback<List<User>>() {
-            @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                //si la respuesta llego pero hubo un problema como error de auth
-                if(!response.isSuccessful()){
-                    Toast.makeText(getActivity().getBaseContext(),"codigo: " +response.code(),Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                //sitodo salio bien pues traemos la respuesta
-                List<User> listaUser = response.body();
-
-                resposeUser = new ArrayList(); //Array donde se almacenaran mis usuarios que traiga en la api
-                //acomodamos el contenido que vamos a traer en el response
-                for (User user: listaUser ){
-                    if(String.valueOf(utils.getSharedUid(preferences)).equals(user.getId_user())){
-                        resposeUser.add(new User(user.getId_user(),user.getEmail(),user.getPassword()));
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-                Toast.makeText(getActivity().getBaseContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

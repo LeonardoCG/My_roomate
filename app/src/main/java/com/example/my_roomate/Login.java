@@ -125,7 +125,7 @@ public class Login extends AppCompatActivity {
         */
         for(User user: resposeUser){
             if(input_email.getText().toString().equals(user.getEmail()) && input_password.getText().toString().equals(user.getPassword())){
-                savePreferene(Integer.parseInt(user.getId_user()));
+                savePreferene(Integer.parseInt(user.getId_user()),user.getNames(), user.getLast_name(), user.getAddress(), user.getUbication(), user.getPhone(), user.getBio(), user.getCurp(), user.getPhoto_profile(), user.getInterestings()[0],user.getInterestings()[1],user.getInterestings()[2],user.getInterestings()[3],user.getInterestings()[4],user.getInterestings()[5]);
                 succesCheck();
                 return;
             }
@@ -139,10 +139,24 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void savePreferene(int id){
+    private void savePreferene(int id, String name, String lastName, String addres, String ubication, String phone, String bio, String curp, String photoProfile, String interesting1, String interesting2, String interesting3, String interesting4, String interesting5, String interesting6){
         SharedPreferences preferences = getSharedPreferences(utils.SHARED_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = preferences.edit();
         edit.putInt(utils.shared_id_user,id);
+        edit.putString(utils.shared_names,name);
+        edit.putString(utils.shared_last_name, lastName);
+        edit.putString(utils.shared_address,addres);
+        edit.putString(utils.shared_ubication, ubication);
+        edit.putString(utils.shared_phone,phone);
+        edit.putString(utils.shared_bio,bio);
+        edit.putString(utils.shared_curp,curp);
+        edit.putString(utils.shared_photo_profile,photoProfile);
+        edit.putString(utils.shared_interestings1,interesting1);
+        edit.putString(utils.shared_interestings2,interesting2);
+        edit.putString(utils.shared_interestings3,interesting3);
+        edit.putString(utils.shared_interestings4,interesting4);
+        edit.putString(utils.shared_interestings5,interesting5);
+        edit.putString(utils.shared_interestings6,interesting6);
         edit.commit();
     }
 
@@ -169,7 +183,7 @@ public class Login extends AppCompatActivity {
                 List<User> listaUser = response.body();
                 //acomodamos el contenido que vamos a traer en el response
                 for (User user: listaUser ){
-                    resposeUser.add(new User(user.getId_user(),user.getEmail(),user.getPassword()));
+                    resposeUser.add(new User(user.getId_user(),user.getNames(),user.getLast_name(),user.getAddress(),user.getUbication(),user.getPhone(),user.getBio(),user.getCurp(),user.getEmail(),user.getPassword(),user.getPhoto_profile(),user.getInterestings()));
                 }
             }
 
