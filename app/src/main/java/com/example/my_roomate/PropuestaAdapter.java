@@ -1,5 +1,6 @@
 package com.example.my_roomate;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.my_roomate.Model.Proposel;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.ViewHolderPropuesta>  {
 
-    private List<Propuesta> items;
+    private List<Proposel> items;
+    private Context context;
 
     //Esta clase es una referencia al layout  recycler_template la plantilla
     public class ViewHolderPropuesta extends RecyclerView.ViewHolder {
@@ -33,8 +40,9 @@ public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.View
     }
 
     //Funcion que me dara acceso al arreglo
-    public PropuestaAdapter(List<Propuesta> items){
-        this.items = items;
+    public PropuestaAdapter(Context context){
+        this.context = context;
+        items = new ArrayList<>();
     }
 
     //ViewGroup es una colección de recursos, son las secciones de los espacios disponibles que estan en el recycler view
@@ -51,17 +59,29 @@ public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.View
     // recibe dos parametros, nuestro item card o template y la posición donde quiero que se pinte
     @Override
     public void onBindViewHolder(@NonNull ViewHolderPropuesta viewHolder, int i) {
-        viewHolder.txt_head.setText(items.get(i).get_title());
-        viewHolder.txt_body.setText(items.get(i).get_description());
-        viewHolder.ubicacion.setText(items.get(i).get_localization());
-        viewHolder.precio.setText(items.get(i).get_cost());
-        viewHolder.cover.setImageResource(items.get(i).get_img());
+        viewHolder.txt_head.setText(items.get(i).getTitle());
+        viewHolder.txt_body.setText(items.get(i).getBrief());
+        viewHolder.ubicacion.setText(items.get(i).getLocalization());
+        viewHolder.precio.setText(items.get(i).getCost());
+        //viewHolder.cover.setImageResource(items.get(i).getImg_cover());
+        Glide.with(context)
+                .load(items.get(i).getImg_cover())
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.placeholderimg)
+                .into(viewHolder.cover);
     }
 
     //Las veces que pintara el CardView
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    //Aquí se agregaran las prupuestas cuando la petición del webservice llegue
+    public void adicionarListaPropuesta(List<Proposel> listaPropuestas){
+        items.addAll(listaPropuestas); //me agrega todos los datos que llegaron de la petición
+        notifyDataSetChanged(); // esta función permite actulizar los datos del recicler view
     }
 
 }

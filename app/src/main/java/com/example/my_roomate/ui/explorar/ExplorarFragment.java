@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.my_roomate.Interface.JsonServer;
+import com.example.my_roomate.Model.Proposel;
 import com.example.my_roomate.Model.User;
 import com.example.my_roomate.Propuesta;
 import com.example.my_roomate.PropuestaAdapter;
@@ -49,7 +50,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItemClickListenner {
     private ExplorarViewModel explorarViewModel;
     private RecyclerView recycler_propuestas_cercanas, recycler_mis_propuestas, recycler_propuestas_vistas;
-    private RecyclerView.Adapter adapter_propuestas_cercanas, adapter_mis_propuestas, adapter_propuestas_vistas;
+    private PropuestaAdapter adapter_propuestas_cercanas, adapter_mis_propuestas, adapter_propuestas_vistas;
     SQLiteOpenHelper conn;
     SharedPreferences preferences;
     private Retrofit retrofit;
@@ -57,22 +58,6 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        //Inyectando datos fake
-        int c1 = R.drawable.casa1;
-        int c2 = R.drawable.casa2;
-        int c3 = R.drawable.casa3;
-        List items_propuestas_cercanas = new ArrayList();
-        items_propuestas_cercanas.add(new Propuesta("Casa Montejo","Busco rommie para compartir renta en casa Montejo","Mérida,Yuc","1200.00",4,false,c1));
-        items_propuestas_cercanas.add(new Propuesta("Renta en Madero","Busco rommie para compartir renta en casa Madero","Mérida,Yuc","980.00",5,false, c2));
-        items_propuestas_cercanas.add(new Propuesta("Casa por Prepa2","Busco rommies urgentes para rentar casa cerca de la prepa2","Mérida,Yuc","1200.00",0,false, c3));
-        List items_mis_propuestas = new ArrayList();
-        items_mis_propuestas.add(new Propuesta("Casa en Centro","Casa para dos rommies en centro","Mérida,Yuc","1500.00",4,false,c1));
-        items_mis_propuestas.add(new Propuesta("¿Compartimos casa?","Busco rommie para compartir renta cerca de Itzaes","Mérida,Yuc","900.00",5,false, c2));
-        items_mis_propuestas.add(new Propuesta("Casa por TEC","Compartamos renta, casa por el tec poniente","Mérida,Yuc","800.00",0,false, c3));
-        List items_propuestas_vistas = new ArrayList();
-        items_propuestas_vistas.add(new Propuesta("Casa en Centro","Casa para dos rommies en centro","Mérida,Yuc","1500.00",4,false,c1));
-        items_propuestas_vistas.add(new Propuesta("Casa Montejo","Busco rommie para compartir renta en casa Montejo","Mérida,Yuc","1200.00",4,false,c1));
-        items_propuestas_vistas.add(new Propuesta("Casa por TEC","Compartamos renta, casa por el tec poniente","Mérida,Yuc","800.00",0,false, c3));
         //asignando los datos guardadados globalmente
         preferences = this.getActivity().getSharedPreferences(utils.SHARED_FILE, Context.MODE_PRIVATE);
 
@@ -94,11 +79,11 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
         recycler_propuestas_vistas.setLayoutManager(new LinearLayoutManager( root.getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         //crear un nuevo adapter
-        adapter_propuestas_cercanas = new PropuestaAdapter(items_propuestas_cercanas);
+        adapter_propuestas_cercanas = new PropuestaAdapter(getActivity().getApplicationContext());
         recycler_propuestas_cercanas.setAdapter(adapter_propuestas_cercanas);
-        adapter_mis_propuestas = new PropuestaAdapter(items_mis_propuestas);
+        adapter_mis_propuestas = new PropuestaAdapter(getActivity().getApplicationContext());
         recycler_mis_propuestas.setAdapter(adapter_mis_propuestas);
-        adapter_propuestas_vistas = new PropuestaAdapter(items_propuestas_vistas);
+        adapter_propuestas_vistas = new PropuestaAdapter(getActivity().getApplicationContext());
         recycler_propuestas_vistas.setAdapter(adapter_propuestas_vistas);
 
         retrofit = new Retrofit.Builder()
@@ -121,24 +106,24 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
         //llamando a la interfaz
         JsonServer jsonServer = retrofit.create(JsonServer.class);
         //llamamos al método de la interfaz que vamos a usar
-        Call<List<Propuesta>> call = jsonServer.getPropuestas();
+        Call<List<Proposel>> call = jsonServer.getPropuestas();
         //creando la respuesta (si hubo error o fue exitoso)
-        call.enqueue(new Callback<List<Propuesta>>() {
+        call.enqueue(new Callback<List<Proposel>>() {
             @Override
-            public void onResponse(Call<List<Propuesta>> call, Response<List<Propuesta>> response) {
+            public void onResponse(Call<List<Proposel>> call, Response<List<Proposel>> response) {
                 //si la respuesta llego pero hubo un problema como error de auth
                 if(!response.isSuccessful()){
                     Toast.makeText(getActivity().getBaseContext(),"codigo: " +response.code(),Toast.LENGTH_SHORT).show();
-                    //sitodo salio bien pues traemos la respuesta
                     return;
                 }
-                List<Propuesta> listaUser = response.body();
-
-
+                List<Proposel> listaUser = response.body();
+                adapter_propuestas_cercanas.adicionarListaPropuesta(listaUser);
+                adapter_mis_propuestas.adicionarListaPropuesta(listaUser);
+                adapter_propuestas_vistas.adicionarListaPropuesta(listaUser);
             }
 
             @Override
-            public void onFailure(Call<List<Propuesta>> call, Throwable t) {
+            public void onFailure(Call<List<Proposel>> call, Throwable t) {
                 Toast.makeText(getActivity().getBaseContext(),t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
