@@ -117,8 +117,19 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
                     return;
                 }
                 List<Proposel> listaUser = response.body();
-                adapter_propuestas_cercanas.adicionarListaPropuesta(listaUser);
-                adapter_mis_propuestas.adicionarListaPropuesta(listaUser);
+                List<Proposel> myProposel, closeProposel;
+                myProposel = new ArrayList();
+                closeProposel = new ArrayList<>();
+                for(Proposel proposel: listaUser){
+                    if(proposel.getId_user_create().equals(String.valueOf(utils.getSharedUid(preferences)))){
+                        myProposel.add(proposel);
+                    }else{
+                        closeProposel.add(proposel);
+                    }
+                }
+
+                adapter_propuestas_cercanas.adicionarListaPropuesta(closeProposel);
+                adapter_mis_propuestas.adicionarListaPropuesta(myProposel);
                 adapter_propuestas_vistas.adicionarListaPropuesta(listaUser);
             }
 

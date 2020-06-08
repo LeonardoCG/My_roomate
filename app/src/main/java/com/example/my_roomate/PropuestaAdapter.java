@@ -63,7 +63,7 @@ public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.View
         viewHolder.txt_body.setText(items.get(i).getBrief());
         viewHolder.ubicacion.setText(items.get(i).getLocalization());
         viewHolder.precio.setText(items.get(i).getCost());
-        //viewHolder.cover.setImageResource(items.get(i).getImg_cover());
+        //Descargar la imagen cover que llega del servidor
         Glide.with(context)
                 .load(items.get(i).getImg_cover())
                 .centerCrop()

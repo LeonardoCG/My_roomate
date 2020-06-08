@@ -43,7 +43,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PerfilFragment extends Fragment {
     private PerfilViewModel perfilViewModel;
     private ImageButton btn_setting;
-    private List<User> resposeUser;
     private ImageView img_user;
     private TextView name_user,ubication_user,bio_user,phone,address,inte1,inte2,inte3,inte4,inte5,inte6;
     SharedPreferences preferences;
