@@ -46,26 +46,11 @@ public class GuardadosFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        /*
-        //Inyectando datos fake
-        int c1 = R.drawable.casa1;
-        int c2 = R.drawable.casa2;
-        int c3 = R.drawable.casa3;
-        int userpic = R.drawable.user;
-        List items_propuestas_guardadas = new ArrayList();
-        items_propuestas_guardadas.add(new Propuesta("Alberto Jimenez","Mérida,Yuc","Casa Montejo","Busco rommie para compartir renta en casa Montejo","Mérida,Yuc","1200.00",4,true,c1, userpic));
-        items_propuestas_guardadas.add(new Propuesta("Cecilia Aldair","Mérida,Yuc","Renta en Madero","Busco rommie para compartir renta en casa Madero","Mérida,Yuc","980.00",5,true, c2, userpic));
-        items_propuestas_guardadas.add(new Propuesta("Sofia Melendez","Mérida,Yuc","Casa por Prepa2","Busco rommies urgentes para rentar casa cerca de la prepa2","Mérida,Yuc","1200.00",0,true, c3, userpic));
-
-         */
-
         //asignando los datos guardadados globalmente
         preferences = this.getActivity().getSharedPreferences(utils.SHARED_FILE, Context.MODE_PRIVATE);
-
         guardadosViewModel =
                 ViewModelProviders.of(this).get(GuardadosViewModel.class);
         View root = inflater.inflate(R.layout.fragment_guardados, container, false);
-
         //implementando recycler views
         //Obtener el recycler
         recycler_propuestas_guardadas = root.findViewById(R.id.recylcer_propuestas_guardadas);
@@ -75,13 +60,12 @@ public class GuardadosFragment extends Fragment {
         //crear un nuevo adapter
         adapter_propuestas_guardadas = new PropuestaAdapter(getActivity().getApplicationContext());
         recycler_propuestas_guardadas.setAdapter(adapter_propuestas_guardadas);
-
+        //Realizando la petición al webservice
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://my-json-server.typicode.com/Megajjks/dbroomate/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         obtenerPropuestas();
-
         return root;
     }
 

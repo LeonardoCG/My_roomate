@@ -1,5 +1,6 @@
 package com.example.my_roomate;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.my_roomate.Model.Proposel;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyroomAdapter extends RecyclerView.Adapter<MyroomAdapter.ViewHolderMyroom> {
 
-    private List<Propuesta> items;
+    private List<Proposel> items;
+    private Context context;
 
     public class ViewHolderMyroom extends RecyclerView.ViewHolder {
 
@@ -31,8 +38,9 @@ public class MyroomAdapter extends RecyclerView.Adapter<MyroomAdapter.ViewHolder
     }
 
     //Funcion que me dara acceso al arreglo
-    public MyroomAdapter(List<Propuesta> items){
-        this.items = items;
+    public MyroomAdapter(Context context){
+        this.context = context;
+        items = new ArrayList<>();
     }
 
     @NonNull
@@ -45,11 +53,17 @@ public class MyroomAdapter extends RecyclerView.Adapter<MyroomAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMyroom viewHolder, int i) {
-        viewHolder.txt_head.setText(items.get(i).get_title());
-        viewHolder.txt_body.setText(items.get(i).get_description());
-        viewHolder.ubicacion.setText(items.get(i).get_localization());
-        viewHolder.precio.setText(items.get(i).get_cost());
-        viewHolder.cover.setImageResource(items.get(i).get_img());
+        viewHolder.txt_head.setText(items.get(i).getTitle());
+        viewHolder.txt_body.setText(items.get(i).getBrief());
+        viewHolder.ubicacion.setText(items.get(i).getLocalization());
+        viewHolder.precio.setText(items.get(i).getCost());
+        //Descargar la imagen cover que llega del servidor
+        Glide.with(context)
+                .load(items.get(i).getImg_cover())
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.placeholderimg)
+                .into(viewHolder.cover);
     }
 
     @Override
@@ -57,5 +71,10 @@ public class MyroomAdapter extends RecyclerView.Adapter<MyroomAdapter.ViewHolder
         return items.size();
     }
 
+    //Aquí se agregaran las prupuestas cuando la petición del webservice llegue
+    public void adicionarListaPropuesta(List<Proposel> listaPropuestas){
+        items.addAll(listaPropuestas); //me agrega todos los datos que llegaron de la petición
+        notifyDataSetChanged(); // esta función permite actulizar los datos del recicler view
+    }
 
 }
