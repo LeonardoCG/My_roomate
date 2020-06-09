@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.View
         //campos respectivos al CardView
         public TextView txt_head, txt_body, ubicacion, precio;
         public ImageView cover;
+        public RatingBar favBar;
 
         public ViewHolderPropuesta(View v){
             super(v);
@@ -35,6 +37,7 @@ public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.View
             txt_body = v.findViewById(R.id.text_body_cv1);
             ubicacion = v.findViewById(R.id.text_lugar_cv1);
             precio = v.findViewById(R.id.text_precio_cv1);
+            favBar = v.findViewById(R.id.fav_bar);
             cover = v.findViewById(R.id.cover_card);
         }
     }
@@ -63,6 +66,7 @@ public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.View
         viewHolder.txt_body.setText(items.get(i).getBrief());
         viewHolder.ubicacion.setText(items.get(i).getLocalization());
         viewHolder.precio.setText(items.get(i).getCost());
+        viewHolder.favBar.setRating(Float.parseFloat(items.get(i).getRanking()));
         //Descargar la imagen cover que llega del servidor
         Glide.with(context)
                 .load(items.get(i).getImg_cover())

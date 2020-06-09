@@ -53,47 +53,17 @@
                 android:textSize="20sp"
                 android:layout_weight="9"
                 />
-            <LinearLayout
+            <RatingBar
+                android:id="@+id/fav_bar2"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_weight="1">
-                <ImageView
-                    android:id="@+id/start1"
-                    android:layout_width="16sp"
-                    android:layout_height="16sp"
-                    android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/favorite2"
-                    />
-                <ImageView
-                    android:id="@+id/start2"
-                    android:layout_width="16sp"
-                    android:layout_height="16sp"
-                    android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/favorite2"
-                    />
-                <ImageView
-                    android:id="@+id/start3"
-                    android:layout_width="16sp"
-                    android:layout_height="16sp"
-                    android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/favorite"
-                    />
-                <ImageView
-                    android:id="@+id/start4"
-                    android:layout_width="16sp"
-                    android:layout_height="16sp"
-                    android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/favorite"
-                    />
-                <ImageView
-                    android:id="@+id/start5"
-                    android:layout_width="16sp"
-                    android:layout_height="16sp"
-                    android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/favorite"
-                    />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_gravity="center"
+                android:saveEnabled="true"
+                android:numStars="5"
+                android:rating="1"
+                android:stepSize="1"
+                />
         </LinearLayout>
         <TextView
             android:id="@+id/text_body_cv3"
