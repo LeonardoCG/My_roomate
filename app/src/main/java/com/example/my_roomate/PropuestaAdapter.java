@@ -18,10 +18,12 @@ import com.example.my_roomate.Model.Proposel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.ViewHolderPropuesta>  {
+public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.ViewHolderPropuesta> implements View.OnClickListener {
 
     private List<Proposel> items;
     private Context context;
+    private View.OnClickListener listener; //variable que me servira para generar de forma manual el onclick listener
+
 
     //Esta clase es una referencia al layout  recycler_template la plantilla
     public class ViewHolderPropuesta extends RecyclerView.ViewHolder {
@@ -55,6 +57,7 @@ public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.View
     public ViewHolderPropuesta onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.propuesta_card_view, viewGroup, false);
+        v.setOnClickListener(this);
         return new ViewHolderPropuesta(v);
     }
 
@@ -88,4 +91,14 @@ public class PropuestaAdapter extends RecyclerView.Adapter<PropuestaAdapter.View
         notifyDataSetChanged(); // esta función permite actulizar los datos del recicler view
     }
 
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(listener!=null){
+            listener.onClick(v);
+        }
+    }
 }

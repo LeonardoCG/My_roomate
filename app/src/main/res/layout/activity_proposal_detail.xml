@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/container_white"
+    tools:context=".ProposalDetail"
+    >
+
+    <ImageView
+        android:id="@+id/img_proposel_detail"
+        android:layout_width="match_parent"
+        android:layout_height="200sp"
+        android:src="@drawable/casa1"
+        android:scaleType="centerCrop"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="50sp"
+            >
+            <TextView
+                android:id="@+id/tipo_casa_pd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Casa entera"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:paddingTop="10sp"
+                android:paddingBottom="5sp"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                />
+            <TextView
+                android:id="@+id/titulo_pd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Casa Prueba"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:textSize="28sp"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp">
+                <ImageView
+                    android:id="@+id/lugar_pd"
+                    android:layout_width="22sp"
+                    android:layout_height="22sp"
+                    app:srcCompat="@drawable/lugar"/>
+                <TextView
+                    android:id="@+id/text_lugar_pd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Merida,Yuc"
+                    android:fontFamily="@font/segoeui"
+                    android:textSize="13sp"
+                    android:layout_toEndOf="@+id/lugar_cv"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/full_description_pd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="So perhaps, you've generated some fancy text, and you're content that you can now copy and paste your fancy text in the comments section of funny cat videos, but perhaps you're wondering how it's even possible to change the font of your text? Is it some sort of hack?"
+                android:fontFamily="@font/segoeui"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:paddingTop="10sp"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Información  del lugar"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:textSize="28sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Habitaciones"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:textSize="20sp"
+                />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:columnCount="4"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10sp"
+                    >
+                    <TextView
+                        android:id="@+id/num_camas_pd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textSize="15sp"
+                        android:layout_marginEnd="5sp"
+                        android:fontFamily="@font/segoeui"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cama(s)"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/segoeui"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10sp"
+                    >
+                    <TextView
+                        android:id="@+id/num_banos_pd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:textSize="15sp"
+                        android:layout_marginEnd="5sp"
+                        android:fontFamily="@font/segoeui"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baños(s)"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/segoeui"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10sp"
+                    >
+                    <TextView
+                        android:id="@+id/num_salas_pd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="15sp"
+                        android:layout_marginEnd="5sp"
+                        android:fontFamily="@font/segoeui"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sala(s)"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/segoeui"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+                    <TextView
+                        android:id="@+id/num_comedor_pd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textSize="15sp"
+                        android:layout_marginEnd="5sp"
+                        android:fontFamily="@font/segoeui"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comedor(es)"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/segoeui"/>
+                </LinearLayout>
+
+            </GridLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Servicios"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:textSize="20sp"
+                />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:columnCount="3"
+                >
+
+                <TextView
+                    android:id="@+id/aircondicionado_pd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aire acondicionado"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/segoeui"
+                    android:layout_marginEnd="20sp"
+                    />
+                <TextView
+                    android:id="@+id/boiler_pd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Boiler"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/segoeui"
+                    android:layout_marginEnd="20sp"
+                    />
+                <TextView
+                    android:id="@+id/internet_pd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Internet"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/segoeui"
+                    android:layout_marginEnd="20sp"
+                    />
+
+            </GridLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Otras cosas"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:textSize="20sp"
+                />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:columnCount="3"
+                >
+
+                <TextView
+                    android:id="@+id/terraza_pd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terraza"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/segoeui"
+                    android:layout_marginEnd="20sp"
+                    />
+                <TextView
+                    android:id="@+id/piscina_pd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Piscina"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/segoeui"
+                    android:layout_marginEnd="20sp"
+                    />
+            </GridLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sobre el autor"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:textSize="28sp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp">
+                <ImageView
+                    android:id="@+id/img_user_pd"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    app:srcCompat="@drawable/ic_account_circle_blue_grey_50_24dp"/>
+                <TextView
+                    android:id="@+id/username_pd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="Juan Jose Perez Lopes "
+                    android:textColor="#000000"
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:textSize="16sp"
+                    android:layout_marginStart="10sp"
+                    android:layout_toEndOf="@+id/lugar_cv"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/bio_user_pd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="So perhaps, you've generated some fancy text, and you're content that you can now copy and paste your fancy text in the comments section of funny cat videos, but perhaps you're wondering how it's even possible to change the font of your text? Is it some sort of hack?"
+                android:fontFamily="@font/segoeui"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:paddingTop="10sp"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Intereses"
+                android:textAlignment="center"
+                android:fontFamily="@font/segoe_ui_bold"
+                android:paddingStart="20sp"
+                android:paddingEnd="20sp"
+                android:paddingBottom="10sp"
+                android:textSize="20sp"
+                />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:alignmentMode="alignMargins"
+                android:columnCount="3"
+                android:orientation="horizontal"
+                android:paddingStart="15sp"
+                android:paddingEnd="15sp">
+
+                <TextView
+                    android:id="@+id/interes1_pd"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="10sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Anime"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/interes2_pd"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:layout_marginEnd="10sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Viajes"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/interes3_pd"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Musica"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/interes4_pd"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Libros"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/interes5_pd"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Politica"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/interes6_pd"
+                    android:layout_width="100sp"
+                    android:layout_height="30sp"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/wrap_intereses_profile"
+                    android:fontFamily="@font/segoeui"
+                    android:text="Tecnología"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+            </GridLayout>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

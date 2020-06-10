@@ -18,10 +18,12 @@ import com.example.my_roomate.Model.Proposel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyroomAdapter extends RecyclerView.Adapter<MyroomAdapter.ViewHolderMyroom> {
+public class MyroomAdapter extends RecyclerView.Adapter<MyroomAdapter.ViewHolderMyroom> implements View.OnClickListener {
 
     private List<Proposel> items;
     private Context context;
+    private View.OnClickListener listener; //variable que me servira para generar de forma manual el onclick listener
+
 
     public class ViewHolderMyroom extends RecyclerView.ViewHolder {
 
@@ -51,6 +53,7 @@ public class MyroomAdapter extends RecyclerView.Adapter<MyroomAdapter.ViewHolder
     public ViewHolderMyroom onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.my_rooms_card_view, viewGroup, false);
+        v.setOnClickListener(this);
         return new MyroomAdapter.ViewHolderMyroom(v);
     }
 
@@ -79,6 +82,17 @@ public class MyroomAdapter extends RecyclerView.Adapter<MyroomAdapter.ViewHolder
     public void adicionarListaPropuesta(List<Proposel> listaPropuestas){
         items.addAll(listaPropuestas); //me agrega todos los datos que llegaron de la petición
         notifyDataSetChanged(); // esta función permite actulizar los datos del recicler view
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(listener!=null){
+            listener.onClick(v);
+        }
     }
 
 }

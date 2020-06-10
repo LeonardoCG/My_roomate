@@ -1,6 +1,7 @@
 package com.example.my_roomate.ui.guardados;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.my_roomate.GuardadoAdapter;
 import com.example.my_roomate.Interface.JsonServer;
 import com.example.my_roomate.Model.Proposel;
+import com.example.my_roomate.ProposalDetail;
 import com.example.my_roomate.Propuesta;
 import com.example.my_roomate.PropuestaAdapter;
 import com.example.my_roomate.R;
@@ -36,12 +38,13 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class GuardadosFragment extends Fragment {
+public class GuardadosFragment extends Fragment{
 
     private RecyclerView recycler_propuestas_guardadas;
     private PropuestaAdapter adapter_propuestas_guardadas;
     private GuardadosViewModel guardadosViewModel;
     private Retrofit retrofit;
+    List<Proposel> likeProposel;
     SharedPreferences preferences;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -66,6 +69,37 @@ public class GuardadosFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         obtenerPropuestas();
+        //Instancias para acceder al método onclick de nuestros cardviews correspondientes a nuestros adapters
+        adapter_propuestas_guardadas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), ProposalDetail.class);
+                intent.putExtra("tipocasa",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).getType_house());
+                intent.putExtra("titulo",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).getTitle());
+                intent.putExtra("lugar",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).getLocalization());
+                intent.putExtra("description",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).getFull_description());
+                intent.putExtra("camas",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).getNumb_bed());
+                intent.putExtra("banos",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).getNumb_bathroom());
+                intent.putExtra("salas",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).getNumb_living_room());
+                intent.putExtra("comedor",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).getNumb_dinning_room());
+                intent.putExtra("aire",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).isAir_conditional());
+                intent.putExtra("boiler",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).isBoiler());
+                intent.putExtra("internet",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).isInternet());
+                intent.putExtra("terraza",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).isTerrace());
+                intent.putExtra("Piscina",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).isPool());
+                intent.putExtra("user",utils.getShared_names(preferences) + " " + utils.getShared_last_name(preferences));
+                intent.putExtra("bio",utils.getShared_bio(preferences));
+                intent.putExtra("in1",utils.getShared_interestings1(preferences));
+                intent.putExtra("in2",utils.getShared_interestings2(preferences));
+                intent.putExtra("in3",utils.getShared_interestings3(preferences));
+                intent.putExtra("in4",utils.getShared_interestings4(preferences));
+                intent.putExtra("in5",utils.getShared_interestings5(preferences));
+                intent.putExtra("in6",utils.getShared_interestings6(preferences));
+                intent.putExtra("imgcover",likeProposel.get(recycler_propuestas_guardadas.getChildAdapterPosition(v)).getImg_slide()[0]);
+                intent.putExtra("imguser",utils.getShared_photo_profile(preferences));
+                startActivity(intent);
+            }
+        });
         return root;
     }
 
@@ -84,7 +118,6 @@ public class GuardadosFragment extends Fragment {
                     return;
                 }
                 List<Proposel> listaUser = response.body();
-                List<Proposel> likeProposel;
                 likeProposel = new ArrayList();
                 for(Proposel proposel: listaUser){
                     if(proposel.getId_user_favorite().equals(String.valueOf(utils.getSharedUid(preferences)))){

@@ -2,6 +2,7 @@ package com.example.my_roomate.ui.explorar;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -28,10 +29,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.my_roomate.Interface.JsonServer;
 import com.example.my_roomate.Model.Proposel;
 import com.example.my_roomate.Model.User;
+import com.example.my_roomate.ProposalDetail;
 import com.example.my_roomate.Propuesta;
 import com.example.my_roomate.PropuestaAdapter;
 import com.example.my_roomate.R;
 import com.example.my_roomate.RecyclerAdapter;
+import com.example.my_roomate.registro;
 import com.example.my_roomate.ui.explorar.ExplorarViewModel;
 import com.example.my_roomate.Utils.utils;
 import com.example.my_roomate.OpenHelper.SQLiteOpenHelper;
@@ -53,6 +56,7 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
     private PropuestaAdapter adapter_propuestas_cercanas, adapter_mis_propuestas, adapter_propuestas_vistas;
     SQLiteOpenHelper conn;
     SharedPreferences preferences;
+    List<Proposel> listaUser, myProposel, closeProposel;
     private Retrofit retrofit;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -86,6 +90,101 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
         adapter_propuestas_vistas = new PropuestaAdapter(getActivity().getApplicationContext());
         recycler_propuestas_vistas.setAdapter(adapter_propuestas_vistas);
 
+        //Instancias para acceder al método onclick de nuestros cardviews correspondientes a nuestros adapters
+        adapter_propuestas_cercanas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), ProposalDetail.class);
+                intent.putExtra("tipocasa",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getType_house());
+                intent.putExtra("titulo",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getTitle());
+                intent.putExtra("lugar",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getLocalization());
+                intent.putExtra("description",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getFull_description());
+                intent.putExtra("camas",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_bed());
+                intent.putExtra("banos",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_bathroom());
+                intent.putExtra("salas",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_living_room());
+                intent.putExtra("comedor",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_dinning_room());
+                intent.putExtra("aire",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isAir_conditional());
+                intent.putExtra("boiler",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isBoiler());
+                intent.putExtra("internet",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isInternet());
+                intent.putExtra("terraza",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isTerrace());
+                intent.putExtra("Piscina",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isPool());
+                intent.putExtra("user",utils.getShared_names(preferences) + " " + utils.getShared_last_name(preferences));
+                intent.putExtra("bio",utils.getShared_bio(preferences));
+                intent.putExtra("in1",utils.getShared_interestings1(preferences));
+                intent.putExtra("in2",utils.getShared_interestings2(preferences));
+                intent.putExtra("in3",utils.getShared_interestings3(preferences));
+                intent.putExtra("in4",utils.getShared_interestings4(preferences));
+                intent.putExtra("in5",utils.getShared_interestings5(preferences));
+                intent.putExtra("in6",utils.getShared_interestings6(preferences));
+                intent.putExtra("imgcover",closeProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getImg_slide()[0]);
+                intent.putExtra("imguser",utils.getShared_photo_profile(preferences));
+                startActivity(intent);
+            }
+        });
+
+        adapter_mis_propuestas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), ProposalDetail.class);
+                intent.putExtra("tipocasa",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getType_house());
+                intent.putExtra("titulo",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getTitle());
+                intent.putExtra("lugar",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getLocalization());
+                intent.putExtra("description",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getFull_description());
+                intent.putExtra("camas",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_bed());
+                intent.putExtra("banos",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_bathroom());
+                intent.putExtra("salas",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_living_room());
+                intent.putExtra("comedor",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_dinning_room());
+                intent.putExtra("aire",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isAir_conditional());
+                intent.putExtra("boiler",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isBoiler());
+                intent.putExtra("internet",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isInternet());
+                intent.putExtra("terraza",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isTerrace());
+                intent.putExtra("Piscina",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isPool());
+                intent.putExtra("user",utils.getShared_names(preferences) + " " + utils.getShared_last_name(preferences));
+                intent.putExtra("bio",utils.getShared_bio(preferences));
+                intent.putExtra("in1",utils.getShared_interestings1(preferences));
+                intent.putExtra("in2",utils.getShared_interestings2(preferences));
+                intent.putExtra("in3",utils.getShared_interestings3(preferences));
+                intent.putExtra("in4",utils.getShared_interestings4(preferences));
+                intent.putExtra("in5",utils.getShared_interestings5(preferences));
+                intent.putExtra("in6",utils.getShared_interestings6(preferences));
+                intent.putExtra("imgcover",myProposel.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getImg_slide()[0]);
+                intent.putExtra("imguser",utils.getShared_photo_profile(preferences));
+                startActivity(intent);
+            }
+        });
+
+        adapter_propuestas_vistas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), ProposalDetail.class);
+                intent.putExtra("tipocasa",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getType_house());
+                intent.putExtra("titulo",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getTitle());
+                intent.putExtra("lugar",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getLocalization());
+                intent.putExtra("description",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getFull_description());
+                intent.putExtra("camas",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_bed());
+                intent.putExtra("banos",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_bathroom());
+                intent.putExtra("salas",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_living_room());
+                intent.putExtra("comedor",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getNumb_dinning_room());
+                intent.putExtra("aire",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isAir_conditional());
+                intent.putExtra("boiler",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isBoiler());
+                intent.putExtra("internet",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isInternet());
+                intent.putExtra("terraza",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isTerrace());
+                intent.putExtra("Piscina",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).isPool());
+                intent.putExtra("user",utils.getShared_names(preferences) + " " + utils.getShared_last_name(preferences));
+                intent.putExtra("bio",utils.getShared_bio(preferences));
+                intent.putExtra("in1",utils.getShared_interestings1(preferences));
+                intent.putExtra("in2",utils.getShared_interestings2(preferences));
+                intent.putExtra("in3",utils.getShared_interestings3(preferences));
+                intent.putExtra("in4",utils.getShared_interestings4(preferences));
+                intent.putExtra("in5",utils.getShared_interestings5(preferences));
+                intent.putExtra("in6",utils.getShared_interestings6(preferences));
+                intent.putExtra("imgcover",listaUser.get(recycler_mis_propuestas.getChildAdapterPosition(v)).getImg_slide()[0]);
+                intent.putExtra("imguser",utils.getShared_photo_profile(preferences));
+                startActivity(intent);
+            }
+        });
+
+
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://my-json-server.typicode.com/Megajjks/dbroomate/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -116,8 +215,7 @@ public class ExplorarFragment extends Fragment implements RecyclerAdapter.onItem
                     Toast.makeText(getActivity().getBaseContext(),"codigo: " +response.code(),Toast.LENGTH_SHORT).show();
                     return;
                 }
-                List<Proposel> listaUser = response.body();
-                List<Proposel> myProposel, closeProposel;
+                listaUser = response.body();
                 myProposel = new ArrayList();
                 closeProposel = new ArrayList<>();
                 for(Proposel proposel: listaUser){
